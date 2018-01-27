@@ -1,3 +1,25 @@
+<?php
+require_once('conenct.php');
+
+if (isset($_POST) & !empty($_POST)) {
+	print_r($_POST);
+	echo "<br />";
+	echo $username = $_POST['username'];
+	echo "<br />";
+	echo $password = $_POST['password'];
+	echo "<br />";
+
+	echo $query = "INSERT INTO `membership` (username, password) VALUES ('$username', '$password')";
+	$result = mysqli_query($connection, $query);
+
+	if ($result) {
+		echo "User registration successfull";
+	} else {
+		echo "User registration failed";
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
