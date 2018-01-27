@@ -7,7 +7,7 @@ if (isset($_POST) & !empty($_POST)) {
 	$username = mysqli_real_escape_string($connection, $_POST['username']); // Prevent SQL injection
 	$password = md5($_POST['password']); // Hash passwords to protect them
 	
-	$query = "SELECT * FROM `users` WHERE username='$username' AND password='$password'"
+	$query = "SELECT * FROM `users` WHERE username='$username' AND password='$password'";
 	$result = mysqli_query($connection, $query);
 	$count = mysqli_num_rows($result);
 
