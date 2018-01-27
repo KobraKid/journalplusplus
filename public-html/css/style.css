@@ -1,20 +1,58 @@
 body {
-	font-family: helvetica, arial, sans-serif;
+
 }
 
-#login {
-	text-align: center;
-	bhackground: #e3e3e3;
-	border: 1px solid #CFCFCF;
-	min-height: 330px;
-	_height: 330px;
-	width: 705px;
-	position: absolute;
-	left: 50%;
-	margin-left: -352px;
-	top: 50%;
-	margin-top: -165px;
-	-moz-border-radius-bottomright: 30px;
-	-webkit-border-bottom-right-radius: 30px;
-	_height: 100%;
+form {
+	border: 3px solid #f1f1f1;
 }
+
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #4caf50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+/*
+ * IDs
+ */
+
+#login-box {
+	width: 75%;
+	margin: auto;
+}
+
+/*
+ * Classes
+ */
+
+.cancel {
+	width: auto;
+	padding: 10px 18px;
+	background-color: #f44336;
+}
+
+ .container {
+ 	padding: 16px;
+ }
+
+ span.password {
+ 	float: right;
+ 	padding-top: 16px;
+ }
