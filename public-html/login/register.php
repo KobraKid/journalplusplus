@@ -1,7 +1,8 @@
 <?php
-require_once('conenct.php');
+require_once('connect.php');
 
 if (isset($_POST) & !empty($_POST)) {
+	echo "<br />";
 	print_r($_POST);
 	echo "<br />";
 	echo $username = $_POST['username'];
@@ -9,7 +10,8 @@ if (isset($_POST) & !empty($_POST)) {
 	echo $password = $_POST['password'];
 	echo "<br />";
 
-	echo $query = "INSERT INTO `membership` (username, password) VALUES ('$username', '$password')";
+	echo $query = "INSERT INTO `users`(id, username, password) VALUES (DEFAULT, '$username', '$password')";
+	echo "<br />";
 	$result = mysqli_query($connection, $query);
 
 	if ($result) {
@@ -37,7 +39,7 @@ if (isset($_POST) & !empty($_POST)) {
 	</head>
 	<body>
 		<div id="register-box">
-			<form action="action_page.php">
+			<form method="POST">
 				<div class="container">
 					<label><b>Username</b></label>
 					<input type="text" placeholder="Enter Username" name="username" required autofocus>
