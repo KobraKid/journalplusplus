@@ -2,16 +2,11 @@
 require_once('connect.php');
 
 if (isset($_POST) & !empty($_POST)) {
-	echo "<br />";
-	print_r($_POST);
-	echo "<br />";
-	echo $username = $_POST['username'];
-	echo "<br />";
-	echo $password = $_POST['password'];
-	echo "<br />";
-
-	echo $query = "INSERT INTO `users`(id, username, password) VALUES (DEFAULT, '$username', '$password')";
-	echo "<br />";
+	
+	$username = mysqli_real_escape_string($connection, $_POST['username']); // Prevent SQL injection
+	$password = md5($_POST['password']); // Hash passwords to protect them
+	
+	$query = "INSERT INTO `users`(id, username, password) VALUES (DEFAULT, '$username', '$password')"; // ID increments by default, no need to specify one
 	$result = mysqli_query($connection, $query);
 
 	if ($result) {
