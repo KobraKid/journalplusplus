@@ -10,9 +10,9 @@ if (isset($_POST) & !empty($_POST)) {
 	$result = mysqli_query($connection, $query);
 
 	if ($result) {
-		echo "User registration successfull";
+		$success = "User registration successfull";
 	} else {
-		echo "User registration failed";
+		$failure = "User registration failed";
 	}
 }
 
@@ -34,6 +34,8 @@ if (isset($_POST) & !empty($_POST)) {
 	</head>
 	<body>
 		<div id="register-box">
+			<?php if(isset($success)){ ?><div class="alert alert-success" role="alert"><?php echo $success; ?></div><?php } ?>
+			<?php if(isset($failure)){ ?><div class="alert alert-danger" role="alert"><?php echo $failure; ?></div><?php } ?>
 			<form method="POST">
 				<div class="container">
 					<label><b>Username</b></label>
