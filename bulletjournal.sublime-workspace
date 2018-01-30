@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cu",
+				"current-time"
+			],
+			[
 				"pass",
 				"password"
 			],
@@ -127,19 +131,27 @@
 	],
 	"file_history":
 	[
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/.gitignore",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/index.html",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/bits.c",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.js",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/player.html",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/tests.c",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/fshow.c",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/ishow.c",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/Makefile",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/btest.h",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/btest.c",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/decl.c",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/.gitignore",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/connect.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/register.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/login.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/logout.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/connet.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/bullethournal.sublime-project",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.js",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.css",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/albums.html",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/songs.html",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/player.html"
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/songs.html"
 	],
 	"find":
 	{
@@ -157,6 +169,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"test_ptr"
 		],
 		"highlight": true,
 		"in_selection": false,
