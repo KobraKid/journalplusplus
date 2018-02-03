@@ -8,23 +8,37 @@ if (isset($_POST) & !empty($_POST)) {
 
 	if ($submitLogin) { // We are logging in an existing user
 		echo("Logging in");
+
+		$username = mysqli_real_escape_string($connection, $_POST['username']); // Prevent SQL injection
+		$password = md5($_POST['password']); // Hash passwords to protect them
+		
+		$query = "SELECT * FROM `users` WHERE username='$username' AND password='$password'";
+		$result = mysqli_query($connection, $query);
+		$count = mysqli_num_rows($result);
+
+		if ($count == 1) {
+			$_SESSION['username'] = $username;
+			$success = "User login succeeded";
+		} else {
+			$failure = "User login failed";
+		}
+
 	} else if ($submitRegister) { // We are creating a new user
 		echo ("Registering");
+	
+		$username = mysqli_real_escape_string($connection, $_POST['username']); // Prevent SQL injection
+		$password = md5($_POST['password']); // Hash passwords to protect them
+
+		$query = "INSERT INTO `users`(id, username, password) VALUES (DEFAULT, '$username', '$password')"; // ID increments by default, no need to specify one
+		$result = mysqli_query($connection, $query);
+
+		if ($result) {
+			$success = "User registration successfull";
+		} else {
+			$failure = "User registration failed";
+		}
 	} else {
 		echo("Neither :(");
-	}
-	
-	$username = mysqli_real_escape_string($connection, $_POST['username']); // Prevent SQL injection
-	$password = md5($_POST['password']); // Hash passwords to protect them
-
-	
-	$query = "INSERT INTO `users`(id, username, password) VALUES (DEFAULT, '$username', '$password')"; // ID increments by default, no need to specify one
-	$result = mysqli_query($connection, $query);
-
-	if ($result) {
-		$success = "User registration successfull";
-	} else {
-		$failure = "User registration failed";
 	}
 }
 
