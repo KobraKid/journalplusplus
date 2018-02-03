@@ -3,8 +3,8 @@ require_once('connect.php');
 
 if (isset($_POST) & !empty($_POST)) {
 
-	$submitLogin = $_POST['submit-login'];
-	$submitRegister = $_POST['submit-register'];
+	$submitLogin = $_POST['login-submit'];
+	$submitRegister = $_POST['register-submit'];
 
 	if ($submitLogin) { // We are logging in an existing user
 		echo("Logging in");
