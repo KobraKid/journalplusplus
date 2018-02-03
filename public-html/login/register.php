@@ -10,6 +10,8 @@ if (isset($_POST) & !empty($_POST)) {
 		echo("Logging in");
 	} else if ($submitRegister) { // We are creating a new user
 		echo ("Registering");
+	} else {
+		echo("Neither :(");
 	}
 	
 	$username = mysqli_real_escape_string($connection, $_POST['username']); // Prevent SQL injection
