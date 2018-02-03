@@ -2,9 +2,19 @@
 require_once('connect.php');
 
 if (isset($_POST) & !empty($_POST)) {
+
+	$submitLogin = $_POST['submit-login'];
+	$submitRegister = $_POST['submit-register'];
+
+	if ($submitLogin) { // We are logging in an existing user
+		echo("Logging in");
+	} else if ($submitRegister) { // We are creating a new user
+		echo ("Registering");
+	}
 	
 	$username = mysqli_real_escape_string($connection, $_POST['username']); // Prevent SQL injection
 	$password = md5($_POST['password']); // Hash passwords to protect them
+
 	
 	$query = "INSERT INTO `users`(id, username, password) VALUES (DEFAULT, '$username', '$password')"; // ID increments by default, no need to specify one
 	$result = mysqli_query($connection, $query);
@@ -18,7 +28,7 @@ if (isset($_POST) & !empty($_POST)) {
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,23 +43,70 @@ if (isset($_POST) & !empty($_POST)) {
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<div id="register-box">
-			<?php if(isset($success)){ ?><div class="alert alert-success" role="alert"><?php echo $success; ?></div><?php } ?>
-			<?php if(isset($failure)){ ?><div class="alert alert-danger" role="alert"><?php echo $failure; ?></div><?php } ?>
-			<form method="POST">
-				<div class="container">
-					<label><b>Username</b></label>
-					<input type="text" placeholder="Enter Username" name="username" required autofocus>
-
-					<label><b>Password</b></label>
-					<input type="password" placeholder="Enter Password" name="password" required>
-
-					<button type="submit">Register</button>
+		<?php if(isset($success)){ ?><div class="alert alert-success" role="alert"><?php echo $success; ?></div><?php } ?>
+		<?php if(isset($failure)){ ?><div class="alert alert-danger" role="alert"><?php echo $failure; ?></div><?php } ?>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-6">
+					<img src="https://snappygoat.com/b/19a728f16c7c793dd8ccf59bb3d893be6e426944" />
 				</div>
-				<div class="container">
-					<button type="button" class="cancel">Cancel</button>
+				<div class="col-6" id="form">
+					<!-- Register -->
+					<form id="register" name="register" method="POST">
+						<div class="container-fluid">
+							<label><b>Enter your email address</b></label>
+							<input type="text" placeholder="Example: john.doe@email.com" name="email" required>
+
+							<label><b>Create a username</b></label>
+							<input type="text" placeholder="Enter Username" name="username" required>
+
+							<label><b>Create a password</b></label>
+							<input type="password" placeholder="Enter Password" name="password" required>
+
+							<label><b>Confirm your password</b></label>
+							<input type="password" placeholder="Enter Password" name="password-confirm" required>
+						</div>
+						<div class="container-fluid">
+							<div class="row">
+								<button id="register-submit" class="col" name="register-submit" type="submit">Register</button>
+							</div>
+						</div>
+					</form>
+					<!-- Switch to login -->
+					<form name="goToLogin">
+						<div class="container-fluid">
+							<div class="row">
+								<button id="switch-to-login" class="col" type="button" onClick="switchToLogin()">Already have an account?</button>
+							</div>
+						</div>
+					</form>
+					<!-- Log in -->
+					<form id="login" name="login" method="POST">
+						<div class="container-fluid">
+
+							<label><b>Username</b></label>
+							<input type="text" placeholder="Enter Username" name="username-login" required>
+
+							<label><b>Password</b></label>
+							<input type="password" placeholder="Enter Password" name="password-login" required>
+						</div>
+						<div class="container-fluid">
+							<div class="row">
+								<button id="login-submit" class="col" name="login-submit" type="submit">Log In</button>
+							</div>
+						</div>
+					</form>
+					<!-- Switch to register -->
+					<form id="cancelLogin" name="cancelLogin">
+						<div class="container-fluid">
+							<div class="row">
+								<button id="login-cancel" class="col cancel" type="button" onClick="switchToRegister()">Cancel</button>
+							</div>
+						</div>
+					</form>
 				</div>
-			</form>
+			</div>
 		</div>
+		<script src="../js/script.js"></script>
 	</body>
 </html>

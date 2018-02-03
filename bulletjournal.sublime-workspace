@@ -91,6 +91,32 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "public-html/login/login.php",
+			"settings":
+			{
+				"buffer_size": 2423,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public-html/login/register.html",
+			"settings":
+			{
+				"buffer_size": 2807,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public-html/css/style.css",
+			"settings":
+			{
+				"buffer_size": 380,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -131,11 +157,14 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/tests.c",
+		"/D/Downloads/[2015.01.07] F, aLiLV - L.M.Hear [S] - eimusics.com/[2015.01.07] Let Me Hear [Single] - eimusics.com/Read Me!.txt",
+		"/C/Users/Michael/Desktop/intellivision scraper.txt",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/player.html",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.css",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.js",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/index.html",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/bits.c",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.js",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/player.html",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/tests.c",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/fshow.c",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/ishow.c",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/Makefile",
@@ -149,7 +178,6 @@
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/logout.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/connet.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/bullethournal.sublime-project",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.css",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/albums.html",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/songs.html"
 	],
@@ -187,8 +215,96 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "public-html/login/login.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2423,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2423,
+								2423
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 91.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public-html/login/register.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2807,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2398,
+								2398
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public-html/css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 380,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								197,
+								197
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -198,7 +314,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 47.0
 	},
 	"layout":
 	{
@@ -269,7 +385,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 189.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
