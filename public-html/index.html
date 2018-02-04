@@ -1,3 +1,14 @@
+<?php
+	
+	/* IMPORTANT: Set to false once outside of a development phase/all developers have logins */
+	$debug = TRUE;
+
+	session_start();
+	if (!$_SESSION['user'] && !$debug) { // If there is no user in the current session, go to the login page
+		header("Location: login/login.html");
+		exit;
+	}
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -12,18 +23,16 @@
 
 		<!-- Custom stylesheets-->
 		<link rel="stylesheet" href="css/style.css" />
-
-		<script type="text/javascript">
-			$(function() {
-			});
-		</script>
 	</head>
 	<body>
+		<?php include("include/header.html");?>
+		<?php include("include/navigation.html");?>
+
 		<!-- Here's a blank slate for our project. Only things included are JQuery and Bootstrap. -->
 		<h1>Hello EECS 330!</h1>
-		<div class="container">
-			<a href="/login/login.php">Login</a> | <a href="/login/register.php">Register</a>
-		</div>
+		<a href="login/logout.php">Log out</a>
+		
+		<?php include("include/footer.html");?>
 		<!-- Scripts -->
 		<!-- NOTE: scripts should be kept at the bottom of the file -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
