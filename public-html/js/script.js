@@ -1,4 +1,4 @@
-var title = "Bullet Journal";
+var title = "BuJo++";
 
 function init() {
 	document.title = title + " | Register";
