@@ -4,12 +4,20 @@
 		"selected_items":
 		[
 			[
-				"cu",
-				"current-time"
-			],
-			[
 				"pass",
 				"password"
+			],
+			[
+				"login",
+				"login-submit"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"cu",
+				"current-time"
 			],
 			[
 				"show",
@@ -92,29 +100,23 @@
 	"buffers":
 	[
 		{
-			"file": "public-html/login/login.php",
+			"file": "public-html/js/editor.js",
 			"settings":
 			{
-				"buffer_size": 2423,
-				"line_ending": "Windows"
+				"buffer_size": 68,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "editor.js"
 			}
 		},
 		{
-			"file": "public-html/login/register.html",
+			"file": "public-html/edit/index.html",
 			"settings":
 			{
-				"buffer_size": 2807,
+				"buffer_size": 180,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public-html/css/style.css",
-			"settings":
-			{
-				"buffer_size": 380,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows",
+				"name": "index.html"
 			}
 		}
 	],
@@ -153,28 +155,70 @@
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/css",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/edit",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/include",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/js",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login"
 	],
 	"file_history":
 	[
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/index.html",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/include/footer.html",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/include/header.html",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/js/script.js",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/js/login.js",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/login.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp33857/home/msh1851/hw2/test3.c",
+		"/C/Users/Michael/AppData/Local/Temp/scp04464/home/msh1851/hw2/test3.dump",
+		"/C/Users/Michael/AppData/Local/Temp/scp15386/home/msh1851/hw2/test.dump",
+		"/C/Users/Michael/AppData/Local/Temp/scp21503/home/msh1851/hw2/testO1.dump",
+		"/C/Users/Michael/AppData/Local/Temp/scp24801/home/msh1851/hw2/testO0.dump",
+		"/C/Users/Michael/AppData/Local/Temp/scp21096/home/msh1851/hw2/testO2.dump",
+		"/C/Users/Michael/AppData/Local/Temp/scp21315/home/msh1851/hw2/testO3.dump",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/bits.c",
+		"/C/Users/Michael/Documents/SCHOOL/middle of a linked list.txt",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/driver.pl",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/btest.c",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/dlc",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/bits.c",
+		"/C/Users/Michael/AppData/Local/Temp/scp25976/var/www/bulletjournal.com/public-html/index.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp16733/var/www/bulletjournal.com/public-html/include/header.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp17127/var/www/bulletjournal.com/public-html/include/footer.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp17549/var/www/bulletjournal.com/public-html/include/navigation.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp25157/var/www/bulletjournal.com/public-html/login/login.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp13318/var/www/bulletjournal.com/public-html/header.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp45094/var/www/bulletjournal.com/public-html/login/login.php",
+		"/C/Users/Michael/AppData/Local/Temp/scp29776/var/www/bulletjournal.com/public-html/login/logout.php",
+		"/C/Users/Michael/AppData/Local/Temp/scp16051/var/www/bulletjournal.com/public-html/login/login.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp41064/var/www/bulletjournal.com/public-html/login/connect.php",
+		"/C/Users/Michael/AppData/Local/Temp/scp15402/etc/apache2/sites-enabled/bulletjournal.com.conf",
+		"/C/Users/Michael/AppData/Local/Temp/scp46305/var/www/bulletjournal.com/public-html/js/script.js",
+		"/C/Users/Michael/AppData/Local/Temp/scp11041/var/www/bulletjournal.com/public-html/index.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp39575/var/www/bulletjournal.com/public-html/login/login.php",
+		"/C/Users/Michael/AppData/Local/Temp/scp13620/var/www/bulletjournal.com/public-html/.htaccesss",
+		"/C/Users/Michael/AppData/Local/Temp/scp39446/var/www/bulletjournal.com/public-html/login/register.php",
+		"/C/Users/Michael/AppData/Local/Temp/scp17376/var/www/bulletjournal.com/public-html/login/register.php",
+		"/C/Users/Michael/AppData/Local/Temp/scp27325/var/www/bulletjournal.com/public-html/css/style.css",
+		"/C/Users/Michael/AppData/Local/Temp/scp25707/var/www/bulletjournal.com/public-html/index.html",
+		"/C/Users/Michael/AppData/Local/Temp/scp26473/var/www/bulletjournal.com/public-html/login/logout.php",
+		"/C/Users/Michael/AppData/Local/Temp/scp26716/var/www/bulletjournal.com/public-html/login/login.php",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/register.php",
+		"/C/Users/Michael/AppData/Local/Temp/scp07571/var/www/bulletjournal.com/public-html/login/register.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/tests.c",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/css/style.css",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/login.php",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.js",
+		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/player.html",
 		"/D/Downloads/[2015.01.07] F, aLiLV - L.M.Hear [S] - eimusics.com/[2015.01.07] Let Me Hear [Single] - eimusics.com/Read Me!.txt",
 		"/C/Users/Michael/Desktop/intellivision scraper.txt",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/player.html",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.css",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/HW2 Javascript/starter2/ipod.js",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/index.html",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/bits.c",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/fshow.c",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/ishow.c",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/Makefile",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/btest.h",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/btest.c",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 213/Lab 1/datalab-handout/decl.c",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/.gitignore",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/connect.php",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/register.php",
-		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/login.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/logout.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/public-html/login/connet.php",
 		"/C/Users/Michael/Documents/SCHOOL/EECS 330/bulletjournal/bullethournal.sublime-project",
@@ -183,7 +227,7 @@
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -197,6 +241,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"zap",
+			"\n\t\t\t",
 			"test_ptr"
 		],
 		"highlight": true,
@@ -220,28 +266,28 @@
 			[
 				{
 					"buffer": 0,
-					"file": "public-html/login/login.php",
+					"file": "public-html/js/editor.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2423,
+						"buffer_size": 68,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2423,
-								2423
+								56,
+								56
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"auto_name": "editor.js",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 91.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -249,60 +295,31 @@
 				},
 				{
 					"buffer": 1,
-					"file": "public-html/login/register.html",
+					"file": "public-html/edit/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2807,
+						"buffer_size": 180,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2398,
-								2398
+								53,
+								53
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 315.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "public-html/css/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 380,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								197,
-								197
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"auto_name": "index.html",
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -310,11 +327,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 23.0
 	},
 	"input":
 	{
-		"height": 47.0
+		"height": 51.0
 	},
 	"layout":
 	{
@@ -347,7 +364,7 @@
 	"project": "bulletjournal.sublime-project",
 	"replace":
 	{
-		"height": 55.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
