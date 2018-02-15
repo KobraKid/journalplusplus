@@ -14,7 +14,14 @@ var numberRowOffset = {
 	"9": -0x11,
 	"0": -0x7
 }; // Used to handle offsets when shift is held down while typing numbers
+var textBoxes = []; // Will contain all textboxes
+var textBox; // Will hold the active textbox
 
+/*
+ * A TextBox is a way to keep track of the text entered in a journal.
+ * param x : An integer describing the leftmost coordinate of the textbox
+ * param y : An integer describing the topmost coordinate of the textbox
+ */
 class TextBox {
 	constructor(xPos, yPos) {
 		this.xPos = xPos;
@@ -36,11 +43,11 @@ class TextBox {
 	set text(t) { this._text = t; }
 }
 
-var textBox = new TextBox(10, 50);
-textBox.text = text;
-
+/*
+ * Sets the document title, sets up vars and event listeners.
+ */
 function init() {
-	// document.title = title + " | Editor";
+	document.title = title + " | Editor";
 	c = document.getElementById("journal-canvas");
 	c.setAttribute("tabindex", 0);
 	ctx = c.getContext("2d");
@@ -49,28 +56,43 @@ function init() {
 	c.addEventListener('keydown', keyDown, false);
 }
 
+/*
+ * Redraws textboxes onto the canvas on text update.
+ * Needs optimization - should only redraw the active textbox boundary
+ */
 function redrawText() {
     textBox.x = cursorPos.x;
     textBox.y = cursorPos.y;
 	if (ctx != undefined) {
 		ctx.clearRect(0, 0, 1500, 750);
-		/*ctx.fillStyle = "rgb(0, 256, 0)";
-		ctx.strokeRect(10, 10, 16, 50);*/
 		ctx.fillStyle = "rgb(0, 0, 0)";
 		ctx.font = "30px Arial";
-		ctx.fillText(text, textBox.x, textBox.y);
+		for (var i = 0; i < textBoxes.length; i++) {
+			ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
+			console.log(textBoxes[i]);
+		}
 	}
 }
 
+/*
+ * Sets x and y to the last clicked position in the canvas.
+ */
 function setCursorPosition(event) {
 	var rect = c.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
     cursorPos.x = x;
     cursorPos.y = y;
+    text = "";
+    textBox = new TextBox(x, y);
+    textBoxes.push(textBox);
     redrawText();
 }
 
+/*
+ * Gets a keypress. If it matches with one of the allowed keypresses,
+ * a character will be added to the current textbox.
+ */
 function keyDown(event) {
 	var keyCode = event.which || event.keyCode || 0;
 	if (keyCode >= 0x41 && keyCode <= 0x5A) { // Uppercase letters
@@ -112,7 +134,7 @@ function keyDown(event) {
 			case 220: text = text = text + (event.shiftKey ? "|" : "\\"); break;
 			case 221: text = text = text + (event.shiftKey ? "}" : "]"); break;
 			case 222: text = text = text + (event.shiftKey ? "\"" : "'"); break;
-			default: break; // The key is not recognized, or is not meant for character input
+			default: return; // The key is not recognized, or is not meant for character input
 		}
 
 	}

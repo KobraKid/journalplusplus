@@ -8,6 +8,8 @@
 
 #journal-canvas {
 	border: 1px solid #DDDDDD;
-	width: 100%;
-	height: 100%;
+	width: 1002px;
+	height: 502px;
+	display: block;
+	margin: auto;
 }
