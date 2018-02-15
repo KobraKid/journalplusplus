@@ -1,0 +1,46 @@
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 12px 20px;
+	margin-bottom: 8px;
+	border: 1px solid #ccc;
+}
+
+button {
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	cursor: pointer;
+	padding: 8px;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+/*
+ * IDs
+ */
+
+#form {
+	border: 3px solid #f1f1f1;
+}
+
+#login {
+	display: none;
+}
+
+#cancelLogin {
+	display: none
+}
+
+#switch-to-login {
+	background-color: #4123FF;
+}
+
+/*
+ * Classes
+ */
+
+.cancel {
+	background-color: #f44336;
+}
