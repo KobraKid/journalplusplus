@@ -11,3 +11,11 @@
 body {
 	background-color: #F6F6FD;
 }
+
+/*
+ * IDs
+ */
+#profile {
+	font-size: 4em;
+	float: right;
+}
