@@ -1,0 +1,15 @@
+/*
+ * Classes
+ */
+
+/*
+ * IDs
+ */
+
+#journal-canvas {
+	border: 1px solid #DDDDDD;
+	width: 1002px;
+	height: 502px;
+	display: block;
+	margin: auto;
+}

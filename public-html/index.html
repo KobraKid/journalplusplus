@@ -1,31 +1,29 @@
+<?php
+	
+	/* IMPORTANT: Set to false once outside of a development phase/all developers have logins */
+	$debug = TRUE;
+
+	session_start();
+	if (!$_SESSION['user'] && !$debug) { // If there is no user in the current session, go to the login page
+		header("Location: login/login.html");
+		exit;
+	}
+?>
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Bullet Journal</title>
-
-		<!-- Metadata -->
-		<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-		<!-- Bootstrap -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-		<!-- Custom stylesheets-->
+		<?php include("include/meta.html");?>
 		<link rel="stylesheet" href="css/style.css" />
-
-		<script type="text/javascript">
-			$(function() {
-			});
-		</script>
 	</head>
 	<body>
+		<?php include("include/header.html");?>
+		<?php include("include/navigation.html");?>
+
 		<!-- Here's a blank slate for our project. Only things included are JQuery and Bootstrap. -->
 		<h1>Hello EECS 330!</h1>
-
-		<!-- Scripts -->
-		<!-- NOTE: scripts should be kept at the bottom of the file -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<a href="login/logout.php">Log out</a>
+		
+		<?php include("include/footer.html");?>
+		<script src="js/script.js"></script>
 	</body>
 </html>

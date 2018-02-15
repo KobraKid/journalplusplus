@@ -1,0 +1,18 @@
+# Ignore hidden or tilde files
+.*
+~*
+
+# Ignore OS generated files
+.DS_Store
+ehthumbs.db
+Thumbs.db
+
+# Ignore editor files
+*.sublime-project
+*.sublime-workspace
+
+# Ignore log files
+*.log
+
+### Don't Ignore
+!.gitignore
