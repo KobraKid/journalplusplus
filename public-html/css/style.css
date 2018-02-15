@@ -13,6 +13,24 @@ body {
 }
 
 /*
+*Cactus
+*/
+.cactus {
+	height: 300px;
+	width: 250px;
+	right: 0;
+	margin-bottom: 10px;
+	position: absolute;
+	bottom: 0;
+}
+
+.cactus img{
+	max-height:100%;
+	max-width: 100%;
+
+}
+
+/*
  * IDs
  */
 #profile {
