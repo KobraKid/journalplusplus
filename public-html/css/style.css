@@ -16,41 +16,38 @@ body {
 *Cactus
 */
 .cactus {
-	height: 300px;
-	width: 250px;
-	right: 0;
-	margin-bottom: 30px;
-	position: absolute;
-	bottom: 0;
+	height: auto;
+	width: 200px;
 }
 
 .cactus img{
 	max-height:100%;
 	max-width: 100%;
-	float: top;
 }
 
 .table {
 	position: absolute;
 	bottom: 0;
+	background: #F6F6FD url('/images/desk.png') no-repeat fixed bottom;
+	height: 100vh;
+	background-size: 100vw auto;
+	display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-bottom: 4%;
 }
 
 .book {
-	position: absolute;
-	bottom: 0;
-	height: 200;
-	width:200;
-	display: flex;
-	justify-content: center;
-	float: center;
-	margin-bottom: 80px;
+	height: auto;
+	width: auto;
+	padding-bottom: 100px;
 }
 
 .book h3{
 	position: absolute;
-	bottom: 5;
-	padding-left: 150px;
+	padding-left: 15%;
 	margin-top: 40px;
+	text-shadow: 0 0 10px white;
 }
 
 /*
@@ -62,11 +59,13 @@ body {
 	position: absolute;
 	top: 0;
 	right: 0;
+	cursor: pointer;
 }
 
 #profile {
 	font-size: 4em;
 	float: right;
+	user-select: none;
 }
 
 #profile-dropdown {

@@ -17,4 +17,19 @@
 	height: 752px;
 	display: block;
 	margin: auto;
+	cursor: text;
+}
+
+#edit-menu-container {
+	z-index: 999;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+#edit-root {
+	font-size: 4em;
+	float: right;
+	cursor: pointer;
+	user-select: none;
 }
