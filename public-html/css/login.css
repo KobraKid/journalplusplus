@@ -72,7 +72,7 @@ label {
 	display: flex;
 	flex-direction: column;
     align-items: initial;
-    padding-top: 200px;
+    padding-top: 5%;
 }
 
 .vertical-center form {
