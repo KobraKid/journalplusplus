@@ -55,7 +55,7 @@ body {
  */
 
 #profileBar {
-	z-index: 999;
+	z-index: 1000;
 	position: absolute;
 	top: 0;
 	right: 0;
