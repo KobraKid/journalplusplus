@@ -27,8 +27,6 @@ body {
 .cactus img{
 	max-height:100%;
 	max-width: 100%;
-<<<<<<< HEAD
-=======
 	float: top;
 }
 
@@ -53,13 +51,26 @@ body {
 	bottom: 5;
 	padding-left: 150px;
 	margin-top: 40px;
->>>>>>> c131991727fd51ce27ea6574597c7648b921d9d2
 }
 
 /*
  * IDs
  */
+
+#profileBar {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
 #profile {
 	font-size: 4em;
 	float: right;
+}
+
+#profile-dropdown {
+	display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 24px;
 }

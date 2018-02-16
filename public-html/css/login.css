@@ -16,11 +16,17 @@ button {
 	border: none;
 	cursor: pointer;
 	padding: 8px;
+	max-width: 385px !important;
+    margin-left: 15px;
 }
 
 button:hover {
 	background-color: #4caf50;
 	opacity: 0.8;
+}
+
+label {
+	text-shadow: 0 0 10px white;
 }
 
 /*
@@ -29,6 +35,12 @@ button:hover {
 #form {
 	background: #F6F6FD url('../images/cover_transparent.png') no-repeat fixed center;
 	height: 100vh;
+}
+
+#register, #goToLogin, #login, #cancelLogin, #switch-to-login {
+	max-width: 420px;
+	max-height: 620px;
+	padding-right: 100px;
 }
 
 #login {
@@ -41,6 +53,7 @@ button:hover {
 
 #switch-to-login {
 	background-color: #4123FF;
+	margin-top: 80px;
 }
 
 /*
@@ -48,4 +61,20 @@ button:hover {
  */
 .cancel {
 	background-color: #f44336;
+}
+
+.cancel:hover {
+	background-color: #f44336;
+	opacity: 0.8;
+}
+
+.vertical-center {
+	display: flex;
+	flex-direction: column;
+    align-items: initial;
+    padding-top: 200px;
+}
+
+.vertical-center form {
+    max-width: 320px;
 }

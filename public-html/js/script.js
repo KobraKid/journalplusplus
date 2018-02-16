@@ -8,7 +8,12 @@ function init() {
 		document.getElementById("profile").addEventListener('click', toggleProfile);;
 		profileOptions = document.getElementById("profile-dropdown");
 		profileOptions.style.display = "none";
+		console.log(profileOptions);
 	}
+}
+
+function notSupported() {
+	alert('Sorry, this functionality is not yet supported.');
 }
 
 function toggleProfile() {
@@ -16,7 +21,7 @@ function toggleProfile() {
 	
 	profileVisible = !profileVisible;
 	if (profileVisible) {
-		profileOptions.style.display = "block";
+		profileOptions.style.display = "flex";
 	} else {
 		profileOptions.style.display = "none";		
 	}
