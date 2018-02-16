@@ -19,7 +19,7 @@ body {
 	height: 300px;
 	width: 250px;
 	right: 0;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	position: absolute;
 	bottom: 0;
 }
@@ -27,6 +27,33 @@ body {
 .cactus img{
 	max-height:100%;
 	max-width: 100%;
+<<<<<<< HEAD
+=======
+	float: top;
+}
+
+.table {
+	position: absolute;
+	bottom: 0;
+}
+
+.book {
+	position: absolute;
+	bottom: 0;
+	height: 200;
+	width:200;
+	display: flex;
+	justify-content: center;
+	float: center;
+	margin-bottom: 80px;
+}
+
+.book h3{
+	position: absolute;
+	bottom: 5;
+	padding-left: 150px;
+	margin-top: 40px;
+>>>>>>> c131991727fd51ce27ea6574597c7648b921d9d2
 }
 
 /*
