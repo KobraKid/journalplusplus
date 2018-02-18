@@ -1,7 +1,7 @@
 <?php
 	
 	/* IMPORTANT: Set to false once outside of a development phase/all developers have logins */
-	$debug = TRUE;
+	$debug = FALSE;
 
 	session_start();
 	if (!$_SESSION['user'] && !$debug) { // If there is no user in the current session, go to the login page
