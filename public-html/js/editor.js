@@ -16,7 +16,7 @@ var numberRowOffset = {
 }; // Used to handle offsets when shift is held down while typing numbers
 var textBoxes = []; // Will contain all textboxes
 var textBox; // Will hold the active textbox
-var backgroundPage = new image();
+var backgroundPage = new Image();
 
 /*
  * A TextBox is a way to keep track of the text entered in a journal.
@@ -52,15 +52,18 @@ function init() {
 	c = document.getElementById("journal-canvas");
 	c.setAttribute("tabindex", 0);
 	ctx = c.getContext("2d");
+	ctx.canvas.width =  window.innerWidth;
+	ctx.canvas.height =  window.innerHeight;
 
 	c.addEventListener('click', setCursorPosition);
 	c.addEventListener('keydown', keyDown, false);
+
+	backgroundPage.onload = function() {
+		ctx.drawImage(backgroundPage, 0, 0);
+	};
+	backgroundPage.src = "../images/bujo.png";
 }
 
-backgroundPage.onload = function() {
-	ctx.drawImage(backgroundPage, 0, 0);
-};
-backgroundPage.src = "../images/bujo.png";
 /*
  * Redraws textboxes onto the canvas on text update.
  * Needs optimization - should only redraw the active textbox boundary
@@ -70,6 +73,7 @@ function redrawText() {
     textBox.y = cursorPos.y;
 	if (ctx != undefined) {
 		ctx.clearRect(0, 0, 1500, 750);
+		ctx.drawImage(backgroundPage, 0, 0);
 		ctx.fillStyle = "rgb(0, 0, 0)";
 		ctx.font = "30px Arial";
 		for (var i = 0; i < textBoxes.length; i++) {

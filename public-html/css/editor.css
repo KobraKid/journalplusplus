@@ -2,19 +2,14 @@
  * Classes
  */
 
-.vertical-center {
-	display: flex;
-	height: 100vh;
-}
-
 /*
  * IDs
  */
 
 #journal-canvas {
 	border: 1px solid #DDDDDD;
-	width: 1502px;
-	height: 752px;
+	width: 100vw;
+	height: 100vh;
 	display: block;
 	margin: auto;
 	cursor: text;
