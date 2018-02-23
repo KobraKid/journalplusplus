@@ -3,7 +3,7 @@
 <div id="profileBar">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col align-self-end">
+			<div class="align-self-end">
 				<i id="profile" class="material-icons">ic_person</i>
 			</div>
 		</div>
@@ -11,6 +11,6 @@
 	<div id="profile-dropdown">
 		<label>Hello, <?php if($_SESSION['user']) { echo($_SESSION['user'][username]); } else { echo("User"); } ?></label>
 		<a href="#" onclick="notSupported()">Profile Options</a>
-		<a href="http://199.74.77.237/login/logout.php">Log out</a>
+		<a href="../login/logout.php">Log out</a>
 	</div>
 </div>

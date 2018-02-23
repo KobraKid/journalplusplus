@@ -2,9 +2,18 @@
  * Classes
  */
 
-.vertical-center {
-	display: flex;
-	height: 100vh;
+.material-icons {
+	font-size: 3em;
+    float: right;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.5em;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.edit-menu {
+	display: none;
 }
 
 /*
@@ -13,8 +22,8 @@
 
 #journal-canvas {
 	border: 1px solid #DDDDDD;
-	width: 1502px;
-	height: 752px;
+	width: 100vw;
+	height: 100vh;
 	display: block;
 	margin: auto;
 	cursor: text;
@@ -27,9 +36,11 @@
 	right: 0;
 }
 
-#edit-root {
+#return {
+	display: none;
+}
+
+#profile, #edit-root, #return {
 	font-size: 4em;
-	float: right;
-	cursor: pointer;
-	user-select: none;
+	line-height: 1.2em;
 }

@@ -16,7 +16,7 @@ var numberRowOffset = {
 }; // Used to handle offsets when shift is held down while typing numbers
 var textBoxes = []; // Will contain all textboxes
 var textBox; // Will hold the active textbox
-var backgroundPage = new image();
+var backgroundPage = new Image();
 
 /*
  * A TextBox is a way to keep track of the text entered in a journal.
@@ -52,15 +52,22 @@ function init() {
 	c = document.getElementById("journal-canvas");
 	c.setAttribute("tabindex", 0);
 	ctx = c.getContext("2d");
+	ctx.canvas.width =  window.innerWidth;
+	ctx.canvas.height =  window.innerHeight;
 
 	c.addEventListener('click', setCursorPosition);
 	c.addEventListener('keydown', keyDown, false);
+
+	backgroundPage.onload = function() {
+		ctx.drawImage(
+						backgroundPage,
+						(ctx.canvas.width - backgroundPage.width) / 2,
+						(ctx.canvas.height - backgroundPage.height) / 2
+					);
+	};
+	backgroundPage.src = "../images/bujo_transparent.png";
 }
 
-backgroundPage.onload = function() {
-	ctx.drawImage(backgroundPage, 0, 0);
-};
-backgroundPage.src = "../images/bujo.png";
 /*
  * Redraws textboxes onto the canvas on text update.
  * Needs optimization - should only redraw the active textbox boundary
@@ -69,10 +76,17 @@ function redrawText() {
     textBox.x = cursorPos.x;
     textBox.y = cursorPos.y;
 	if (ctx != undefined) {
-		ctx.clearRect(0, 0, 1500, 750);
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		ctx.drawImage(
+						backgroundPage,
+						(ctx.canvas.width - backgroundPage.width) / 2,
+						(ctx.canvas.height - backgroundPage.height) / 2
+					);
 		ctx.fillStyle = "rgb(0, 0, 0)";
 		ctx.font = "30px Arial";
 		for (var i = 0; i < textBoxes.length; i++) {
+			if (!(textBoxes[i] === textBox) && textBoxes[i].text == "")
+				textBoxes.splice(i, 1);
 			ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
 			console.log(textBoxes[i]);
 		}
