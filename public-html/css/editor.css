@@ -2,6 +2,20 @@
  * Classes
  */
 
+.material-icons {
+	font-size: 3em;
+    float: right;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.5em;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.edit-menu {
+	display: none;
+}
+
 /*
  * IDs
  */
@@ -22,9 +36,11 @@
 	right: 0;
 }
 
-#edit-root {
+#return {
+	display: none;
+}
+
+#profile, #edit-root, #return {
 	font-size: 4em;
-	float: right;
-	cursor: pointer;
-	user-select: none;
+	line-height: 1.2em;
 }

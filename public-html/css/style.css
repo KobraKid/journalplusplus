@@ -9,12 +9,21 @@
 }
 
 body {
-	background-color: #F6F6FD;
+	background-color: #4a4a48;
 }
 
 /*
 * Classes
 */
+
+.material-icons {
+	color: #d8dad3;
+	border: 2px solid #9caea9;
+	background-color: #9caea9;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px
+}
 
 .banner {
 	position: absolute;
@@ -35,7 +44,7 @@ body {
 .table {
 	position: absolute;
 	bottom: 0;
-	background: #F6F6FD url('/images/desk.png') no-repeat fixed bottom;
+	background: #4a4a48 url('/images/desk.png') no-repeat fixed bottom;
 	height: 100vh;
 	background-size: 100vw auto;
 	display: flex;
@@ -73,6 +82,10 @@ body {
 	font-size: 4em;
 	float: right;
 	user-select: none;
+	border: none;
+    width: initial;
+    height: initial;
+    background-color: transparent;
 }
 
 #profile-dropdown {

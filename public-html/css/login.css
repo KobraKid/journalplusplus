@@ -1,8 +1,3 @@
-body {
-	background-color: #F6F6FD;
-}
-
-
 input[type=text], input[type=password] {
 	width: 100%;
 	padding: 12px 20px;
@@ -11,7 +6,7 @@ input[type=text], input[type=password] {
 }
 
 button {
-	background-color: #4caf50;
+	background-color: #9caea9;
 	color: white;
 	border: none;
 	cursor: pointer;
@@ -21,7 +16,6 @@ button {
 }
 
 button:hover {
-	background-color: #4caf50;
 	opacity: 0.8;
 }
 
@@ -33,7 +27,7 @@ label {
  * IDs
  */
 #form {
-	background: #F6F6FD url('../images/cover_transparent.png') no-repeat fixed center;
+	background: #4a4a48 url('../images/cover_transparent.png') no-repeat fixed center;
 	height: 100vh;
 }
 
@@ -52,19 +46,15 @@ label {
 }
 
 #switch-to-login {
-	background-color: #4123FF;
+	color: black;
+	background-color: #d8dad3;
 }
 
 /*
  * Classes
  */
 .cancel {
-	background-color: #f44336;
-}
-
-.cancel:hover {
-	background-color: #f44336;
-	opacity: 0.8;
+	background-color: #373f47;
 }
 
 .vertical-center {
