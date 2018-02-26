@@ -17,6 +17,11 @@ var numberRowOffset = {
 var textBoxes = []; // Will contain all textboxes
 var textBox; // Will hold the active textbox
 var backgroundPage = new Image();
+var cal; // Only one calendar object on the page at a time for now
+var placeCalendar = true; // Toggles when the user is going to place a calendar
+var calendar;
+var calx;
+var caly;
 
 /*
  * A TextBox is a way to keep track of the text entered in a journal.
@@ -43,6 +48,30 @@ class TextBox {
 	set height(h) { this._height = h; }
 	set text(t) { this._text = t; }
 }
+
+/*
+ * A Calendar is a blank calendar template that can be drawn on the journal
+ */
+ class Calendar {
+ 	constructor(xPos, yPos) {
+		this.xPos = xPos;
+		this.yPos = yPos;
+		calendar = new Image();
+		calendar.onload = function() {
+			ctx.drawImage(
+						calendar,
+						this.xPos, this.yPos
+					);
+		};
+		calendar.src = "../images/calendar-template.jpg";
+	}
+
+	get x() { return this.xPos; }
+	get y() { return this.yPos; }
+
+	set x(xPos) { this.xPos = xPos; }
+	set y(yPos) { this.yPos = yPos; }
+ }
 
 /*
  * Sets the document title, sets up vars and event listeners.
@@ -90,6 +119,7 @@ function redrawText() {
 			ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
 			console.log(textBoxes[i]);
 		}
+		ctx.drawImage(calendar, calx, caly, 400, 300);
 	}
 }
 
@@ -100,12 +130,23 @@ function setCursorPosition(event) {
 	var rect = c.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    cursorPos.x = x;
-    cursorPos.y = y;
-    text = "";
-    textBox = new TextBox(x, y);
-    textBoxes.push(textBox);
-    redrawText();
+    if (placeCalendar) {
+    	placeCalendar = false;
+		calendar = new Image();
+		calx = x;
+		caly = y;
+		calendar.onload = function() {
+			ctx.drawImage(calendar, calx, caly, 400, 300);
+		};
+		calendar.src = "../images/calendar-template.jpg";
+	} else {
+	    cursorPos.x = x;
+	    cursorPos.y = y;
+	    text = "";
+	    textBox = new TextBox(x, y);
+	    textBoxes.push(textBox);
+	    redrawText();
+	}
 }
 
 /*
