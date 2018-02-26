@@ -18,7 +18,7 @@ var textBoxes = []; // Will contain all textboxes
 var textBox; // Will hold the active textbox
 var backgroundPage = new Image();
 var cal; // Only one calendar object on the page at a time for now
-var placeCalendar = true; // Toggles when the user is going to place a calendar
+var placeCalendar = false; // Toggles when the user is going to place a calendar
 var calendar;
 var calx;
 var caly;
@@ -111,6 +111,8 @@ function redrawText() {
 						(ctx.canvas.width - backgroundPage.width) / 2,
 						(ctx.canvas.height - backgroundPage.height) / 2
 					);
+		if (calendar != undefined)
+			ctx.drawImage(calendar, calx, caly, 400, 300);
 		ctx.fillStyle = "rgb(0, 0, 0)";
 		ctx.font = "30px Arial";
 		for (var i = 0; i < textBoxes.length; i++) {
@@ -119,7 +121,6 @@ function redrawText() {
 			ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
 			console.log(textBoxes[i]);
 		}
-		ctx.drawImage(calendar, calx, caly, 400, 300);
 	}
 }
 
@@ -147,6 +148,10 @@ function setCursorPosition(event) {
 	    textBoxes.push(textBox);
 	    redrawText();
 	}
+}
+
+function enableCalendar() {
+	placeCalendar = true;
 }
 
 /*
