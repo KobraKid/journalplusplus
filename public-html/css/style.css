@@ -12,6 +12,8 @@ body {
 	background-color: #4a4a48;
 }
 
+
+
 /*
 * Classes
 */
@@ -44,7 +46,7 @@ body {
 .table {
 	position: absolute;
 	bottom: 0;
-	background: #4a4a48 url('/images/desk.png') no-repeat fixed bottom;
+	background: #4a4a48 url('/images/desk.png') no-repeat fixed bottom;  /* ADD  " . ." to beginning to see it but dont push ! */ 
 	height: 100vh;
 	background-size: 100vw auto;
 	display: flex;
@@ -64,6 +66,31 @@ body {
 	padding-left: 15%;
 	margin-top: 40px;
 	text-shadow: 0 0 10px white;
+}
+
+.profile-large {
+	height: 99vh;
+	width: 1000px;
+	padding-top: 50px;
+	margin-left: 20px;
+	padding-left: 10px;
+	box-shadow: 10px 10px 10px 10px 10px #4a4a48;
+	background: radial-gradient(circle, #5e656b, #4a4a48);
+}
+
+.profile-info {
+    padding: 0px 115px;
+    background-color: #586572;
+}
+
+.profile-large h2 {
+	color: #9caea9;
+	font-size: 310%;
+	padding-bottom: 15px;
+}
+
+.profile-large h3 {
+	color: #d8dad3;
 }
 
 /*
@@ -86,6 +113,23 @@ body {
     width: initial;
     height: initial;
     background-color: transparent;
+}
+
+#edit-info{
+	background-color: #4a4a48;
+	position: absolute;
+	bottom: 20px;
+	right: 400px;
+	border-color: #9caea9;
+	color: #9caea9;
+}
+
+#terminate {
+	background-color: #660000;
+	border-color: #9caea9;
+	color: #9caea9;
+	position: absolute;
+	bottom: 20px;
 }
 
 #profile-dropdown {
