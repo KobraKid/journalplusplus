@@ -2,7 +2,7 @@
  * Classes
  */
 
-.material-icons {
+.material-icons, .zmdi {
 	font-size: 3em;
     float: right;
     cursor: pointer;

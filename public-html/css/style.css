@@ -9,14 +9,14 @@
 }
 
 body {
-	background-color: #4a4a48;
+	background-color: #d8dad3;
 }
 
 /*
 * Classes
 */
 
-.material-icons {
+.material-icons, .zmdi {
 	color: #d8dad3;
 	border: 2px solid #9caea9;
 	background-color: #9caea9;
@@ -44,7 +44,7 @@ body {
 .table {
 	position: absolute;
 	bottom: 0;
-	background: #4a4a48 url('/images/desk.png') no-repeat fixed bottom;
+	background: #4a4a48 url('../images/desk.png') no-repeat fixed bottom;
 	height: 100vh;
 	background-size: 100vw auto;
 	display: flex;
@@ -79,6 +79,7 @@ body {
 }
 
 #profile {
+	color: #9caea9;
 	font-size: 4em;
 	float: right;
 	user-select: none;
