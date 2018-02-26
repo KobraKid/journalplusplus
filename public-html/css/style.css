@@ -18,7 +18,7 @@ body {
 * Classes
 */
 
-.material-icons, .zmdi {
+.material-icons, .zmdi, .fa {
 	color: #d8dad3;
 	border: 2px solid #9caea9;
 	background-color: #9caea9;

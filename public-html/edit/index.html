@@ -1,49 +1,233 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<?php include("../include/meta.html");?>
-		<link rel="stylesheet" href="../css/style.css" />
-		<link rel="stylesheet" href="../css/editor.css" />
-	</head>
-		<?php include("../include/header.html");?>
-		<?php include("../include/navigation.html");?>
+<head>
+	<?php include("../include/meta.html");?>
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/editor.css" />
+</head>
+<?php include("../include/header.html");?>
+<?php include("../include/navigation.html");?>
 
-		<div id="journal">
-			<canvas id="journal-canvas" width="1500" height="750">Your browser does not support the HTML5 &lt;canvas&gt; tag.</canvas>
-		</div>
-		<div id="edit-menu-container">
-			<div class="container-fluid">
-				<div id="page-elements" class="row edit-menu">
-					<div class="col align-self-end">
-						<i class="material-icons">add_to_photos</i>
-					</div>
-				</div>
-				<div id="pen" class="row edit-menu">
-					<div class="col align-self-end">
-						<i class="material-icons">border_color</i>
-					</div>
-				</div>
-				<div id="shape" class="row edit-menu">
-					<div class="col align-self-end">
-						<i class="zmdi zmdi-shape"></i>
-					</div>
-				</div>
-				<div id="text" class="row edit-menu">
-					<div class="col align-self-end">
-						<i class="material-icons">format_color_text</i>
-					</div>
-				</div>
-				<div id="edit" class="row" onclick="toggleMenu('edit-menu')">
-					<div class="col align-self-end">
-						<i id="edit-root" class="material-icons">mode_edit</i>
-						<i id="return" class="material-icons">subdirectory_arrow_left</i>
-					</div>
-				</div>
+<div id="journal">
+	<canvas id="journal-canvas" width="1500" height="750">Your browser does not support the HTML5 &lt;canvas&gt; tag.</canvas>
+</div>
+<!-- pen_menu -->
+<div id="sub-menu-container">
+	<div class="container-fluid">
+		<div id="color" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Color">
+					<i class="zmdi zmdi-invert-colors"></i>
+				</span>
 			</div>
 		</div>
-		<?php include("../include/footer.html");?>
-		<script src="../js/script.js"></script>
-		<script src="../js/editor.js"></script>
-		<script src="../js/edit_menu.js"></script>
-	</body>
+		<div id="weight" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Weight">
+					<i class="material-icons">line_weight</i>
+				</span>
+			</div>
+		</div>
+		<div id="texture" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Texture">
+					<i class="zmdi zmdi-brush"></i>
+				</span>
+			</div>
+		</div>
+		<div id="eraser" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Eraser">
+					<i class="fa fa-eraser"></i>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- element_menu -->
+<div id="sub-menu-container">
+	<div class="container-fluid">
+		<div id="image" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Insert image">
+					<i class="zmdi zmdi-image"></i>
+				</span>
+			</div>
+		</div>
+		<div id="calendar" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Insert calendar">
+					<i class="zmdi zmdi-calendar"></i>
+				</span>
+			</div>
+		</div>
+		<div id="list" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Insert list">
+					<i class="fa fa-list-ol"></i>
+				</span>
+			</div>
+		</div>
+		<div id="stickers" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Insert stickers">
+					<i class="zmdi zmdi-mood"></i>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- shape_menu -->
+<div id="sub-menu-container">
+	<div class="container-fluid">
+		<div id="square" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Insert square">
+					<i class="material-icons">check_box_outline_blank</i>
+				</span>
+			</div>
+		</div>
+		<div id="circle" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Insert circle">
+					<i class="material-icons">radio_button_unchecked</i>
+				</span>
+			</div>
+		</div>
+		<div id="triangle" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Insert triangle">
+					<i class="material-icons">change_history</i>
+				</span>
+			</div>
+		</div>
+		<div id="heart" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Insert heart">
+					<i class="fa fa-heart-o"></i>
+				</span>
+			</div>
+		</div>
+		<div id="star" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Insert star">
+					<i class="material-icons">star_border</i>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- text_menu -->
+<div id="sub-menu-container">
+	<div class="container-fluid">
+		<div id="font" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Font">
+					<i class="fa fa-font"></i>
+				</span>
+			</div>
+		</div>
+		<div id="size" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Font size">
+					<i class="zmdi zmdi-format-size"></i>
+				</span>
+			</div>
+		</div>
+		<div id="color" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Color">
+					<i class="zmdi zmdi-invert-colors"></i>
+				</span>
+			</div>
+		</div>
+		<div id="bold" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Bold">
+					<i class="zmdi zmdi-format-bold"></i>
+				</span>
+			</div>
+		</div>
+		<div id="italic" class="row edit-menu">
+			<div class="col align-self-end">
+				<span title="Italic">
+					<i class="zmdi zmdi-format-italic"></i>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- edit_menu -->
+<div id="edit-menu-container">
+	<div class="container-fluid">
+		<div id="page-elements" class="row edit-menu" onclick="toggleMenu('element-menu')">
+			<div class="col align-self-end">
+				<span title="Add page element">
+					<i class="material-icons">add_to_photos</i>
+				</span>
+			</div>
+		</div>
+		<div id="pen" class="row edit-menu" onclick="toggleMenu('pen-menu')">
+			<div class="col align-self-end">
+				<span title="Pen options">
+					<i class="material-icons">border_color</i>
+				</span>
+			</div>
+		</div>
+		<div id="shape" class="row edit-menu" onclick="toggleMenu('shape-menu')">
+			<div class="col align-self-end">
+				<span title="Add shapes">
+					<i class="zmdi zmdi-shape"></i>
+				</span>
+			</div>
+		</div>
+		<div id="text" class="row edit-menu" onclick="toggleMenu('text-menu')">
+			<div class="col align-self-end">
+				<span title="Text options">
+					<i class="material-icons">format_color_text</i>
+				</span>
+			</div>
+		</div>
+		<div id="edit" class="row" onclick="toggleMenu('edit-menu')">
+			<div class="col align-self-end">
+				<i id="edit-root" class="material-icons">mode_edit</i>
+				<i id="return" class="material-icons">subdirectory_arrow_left</i>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php include("../include/footer.html");?>
+<script src="../js/script.js"></script>
+<script src="../js/editor.js"></script>
+<script src="../js/edit_menu.js"></script>
+</body>
 </html>
+
+
+<!--
+image:<i class="zmdi zmdi-image"></i> or <i class="zmdi zmdi-folder-star-alt"></i>
+sticker:<i class="zmdi zmdi-mood"></i> or <i class="zmdi zmdi-loupe"></i>
+calendar:<i class="zmdi zmdi-calendar"></i>
+list:<i class="fa fa-list-ol"></i>
+
+color:<i class="zmdi zmdi-invert-colors"></i>
+weight:<i class="material-icons">line_weight</i>
+texture:<i class="zmdi zmdi-brush"></i>
+eraser:<i class="fa fa-eraser"></i>
+
+square <i class="material-icons">check_box_outline_blank</i>
+circle <i class="material-icons">radio_button_unchecked</i>
+triangle <i class="material-icons">change_history</i>
+star: <i class="material-icons">star_border</i>
+heart <i class="fa fa-heart-o"></i>
+
+font:<i class="fa fa-font"></i>
+size:<i class="zmdi zmdi-format-size"></i>
+color:<i class="zmdi zmdi-invert-colors"></i>
+bold:<i class="zmdi zmdi-format-bold"></i>
+italic:<i class="zmdi zmdi-format-italic"></i>
+-->
