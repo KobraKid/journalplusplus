@@ -1,8 +1,12 @@
+body {
+	background-color: var(--timberwolf);
+}
+
 /*
  * Classes
  */
 
-.material-icons {
+.material-icons, .zmdi, .fa{
 	font-size: 3em;
     float: right;
     cursor: pointer;
@@ -34,6 +38,13 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
+}
+
+#sub-menu-container {
+	z-index: 999;
+	position:absolute;
+	bottom: 88px;
+	right: 88px;
 }
 
 #return {
