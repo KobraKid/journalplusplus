@@ -6,15 +6,33 @@
 	 * Use:;
 	 * background-color: var(--myColor);
 	 */
+	--timberwolf: #d8dad3;
+	--outer-space: #4a4a48;
 }
 
 body {
-	background-color: #F6F6FD;
+	background-color: var(--outer-space);
 }
 
 /*
-*Cactus
+* Classes
 */
+
+.material-icons, .zmdi, .fa {
+	color: #d8dad3;
+	border: 2px solid #9caea9;
+	background-color: #9caea9;
+	width: 80px;
+	height: 80px;
+	border-radius: 40px
+}
+
+.banner {
+	position: absolute;
+	top: 0;
+	z-index: 999;
+}
+
 .cactus {
 	height: auto;
 	width: 200px;
@@ -28,7 +46,7 @@ body {
 .table {
 	position: absolute;
 	bottom: 0;
-	background: #F6F6FD url('/images/desk.png') no-repeat fixed bottom;
+	background: #4a4a48 url('../images/desk.png') no-repeat fixed bottom;
 	height: 100vh;
 	background-size: 100vw auto;
 	display: flex;
@@ -55,7 +73,7 @@ body {
  */
 
 #profileBar {
-	z-index: 1000;
+	z-index: 999;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -63,9 +81,14 @@ body {
 }
 
 #profile {
+	color: #9caea9;
 	font-size: 4em;
 	float: right;
 	user-select: none;
+	border: none;
+	width: initial;
+	height: initial;
+	background-color: transparent;
 }
 
 #profile-dropdown {

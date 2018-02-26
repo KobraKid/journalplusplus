@@ -14,5 +14,8 @@ Thumbs.db
 # Ignore log files
 *.log
 
+# Ignore my script files
+*.sh
+
 ### Don't Ignore
 !.gitignore

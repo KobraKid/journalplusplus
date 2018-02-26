@@ -16,7 +16,12 @@ var numberRowOffset = {
 }; // Used to handle offsets when shift is held down while typing numbers
 var textBoxes = []; // Will contain all textboxes
 var textBox; // Will hold the active textbox
-var backgroundPage = new image();
+var backgroundPage = new Image();
+var cal; // Only one calendar object on the page at a time for now
+var placeCalendar = true; // Toggles when the user is going to place a calendar
+var calendar;
+var calx;
+var caly;
 
 /*
  * A TextBox is a way to keep track of the text entered in a journal.
@@ -45,6 +50,30 @@ class TextBox {
 }
 
 /*
+ * A Calendar is a blank calendar template that can be drawn on the journal
+ */
+ class Calendar {
+ 	constructor(xPos, yPos) {
+		this.xPos = xPos;
+		this.yPos = yPos;
+		calendar = new Image();
+		calendar.onload = function() {
+			ctx.drawImage(
+						calendar,
+						this.xPos, this.yPos
+					);
+		};
+		calendar.src = "../images/calendar-template.jpg";
+	}
+
+	get x() { return this.xPos; }
+	get y() { return this.yPos; }
+
+	set x(xPos) { this.xPos = xPos; }
+	set y(yPos) { this.yPos = yPos; }
+ }
+
+/*
  * Sets the document title, sets up vars and event listeners.
  */
 function init() {
@@ -52,15 +81,22 @@ function init() {
 	c = document.getElementById("journal-canvas");
 	c.setAttribute("tabindex", 0);
 	ctx = c.getContext("2d");
+	ctx.canvas.width =  window.innerWidth;
+	ctx.canvas.height =  window.innerHeight;
 
 	c.addEventListener('click', setCursorPosition);
 	c.addEventListener('keydown', keyDown, false);
+
+	backgroundPage.onload = function() {
+		ctx.drawImage(
+						backgroundPage,
+						(ctx.canvas.width - backgroundPage.width) / 2,
+						(ctx.canvas.height - backgroundPage.height) / 2
+					);
+	};
+	backgroundPage.src = "../images/bujo_transparent.png";
 }
 
-backgroundPage.onload = function() {
-	ctx.drawImage(backgroundPage, 0, 0);
-};
-backgroundPage.src = "../images/bujo.png";
 /*
  * Redraws textboxes onto the canvas on text update.
  * Needs optimization - should only redraw the active textbox boundary
@@ -69,13 +105,21 @@ function redrawText() {
     textBox.x = cursorPos.x;
     textBox.y = cursorPos.y;
 	if (ctx != undefined) {
-		ctx.clearRect(0, 0, 1500, 750);
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		ctx.drawImage(
+						backgroundPage,
+						(ctx.canvas.width - backgroundPage.width) / 2,
+						(ctx.canvas.height - backgroundPage.height) / 2
+					);
 		ctx.fillStyle = "rgb(0, 0, 0)";
 		ctx.font = "30px Arial";
 		for (var i = 0; i < textBoxes.length; i++) {
+			if (!(textBoxes[i] === textBox) && textBoxes[i].text == "")
+				textBoxes.splice(i, 1);
 			ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
 			console.log(textBoxes[i]);
 		}
+		ctx.drawImage(calendar, calx, caly, 400, 300);
 	}
 }
 
@@ -86,12 +130,23 @@ function setCursorPosition(event) {
 	var rect = c.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    cursorPos.x = x;
-    cursorPos.y = y;
-    text = "";
-    textBox = new TextBox(x, y);
-    textBoxes.push(textBox);
-    redrawText();
+    if (placeCalendar) {
+    	placeCalendar = false;
+		calendar = new Image();
+		calx = x;
+		caly = y;
+		calendar.onload = function() {
+			ctx.drawImage(calendar, calx, caly, 400, 300);
+		};
+		calendar.src = "../images/calendar-template.jpg";
+	} else {
+	    cursorPos.x = x;
+	    cursorPos.y = y;
+	    text = "";
+	    textBox = new TextBox(x, y);
+	    textBoxes.push(textBox);
+	    redrawText();
+	}
 }
 
 /*
