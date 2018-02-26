@@ -10,7 +10,8 @@
 	</div>
 	<div id="profile-dropdown">
 		<label>Hello, <?php if($_SESSION['user']) { echo($_SESSION['user'][username]); } else { echo("User"); } ?></label>
-		<a href="#" onclick="notSupported()">Profile Options</a>
+		<!---<a href="#" onclick="notSupported()"> -->
+		<a href="../profile.html">Profile Options</a>
 		<a href="../login/logout.php">Log out</a>
 	</div>
 </div>
