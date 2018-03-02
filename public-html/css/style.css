@@ -120,12 +120,14 @@ h3{
 
 .profile-large h2 {
 	color: #9caea9;
-	font-size: 310%;
+	font-family: courier;
+	font-weight: bold;
+	font-size: 350%;
 	padding-bottom: 15px;
 }
 
 .profile-large h3 {
-	color: var(--timberwolf);
+	color: #9caea9;
 }
 
 /*
@@ -154,8 +156,8 @@ h3{
 #edit-info{
 	background-color: var(--outer-space);
 	position: absolute;
-	bottom: 20px;
-	right: 400px;
+	margin-top: 20px;
+	margin-left: 80px;
 	border-color: #9caea9;
 	color: #9caea9;
 }
@@ -165,7 +167,9 @@ h3{
 	border-color: #9caea9;
 	color: #9caea9;
 	position: absolute;
-	bottom: 20px;
+	margin-top: 20px;
+	margin-left: 250px;
+	float: left;
 }
 
 #profile-dropdown {
@@ -173,7 +177,6 @@ h3{
     flex-direction: column;
     align-items: flex-end;
     padding-right: 4px;
-    float: left;
     background: linear-gradient(to right, var(--outer-space), #9caea9);
     width: 100%;
     box-shadow: 0px 8px 16px 5px rgba(0,0,0,0.2);
