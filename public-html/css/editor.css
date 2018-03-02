@@ -76,7 +76,7 @@ input[type="color"]::-webkit-color-swatch {
 	right: 0;
 }
 
-#pen-color-picker {
+#pen-color-picker, #text-color-picker {
 	cursor: pointer;
 	opacity: 0;
 	position: absolute;
