@@ -1,5 +1,10 @@
+// For Canvas
 var c; // canvas
 var ctx; // context
+var backgroundPage = new Image(); // The journal in the background
+
+// For Textbox
+var canType = false; // Toggles when the user can type
 var cursorPos = {"x": 0, "y": 0};
 var text = ""; // typed text
 var numberRowOffset = {
@@ -16,12 +21,20 @@ var numberRowOffset = {
 }; // Used to handle offsets when shift is held down while typing numbers
 var textBoxes = []; // Will contain all textboxes
 var textBox; // Will hold the active textbox
-var backgroundPage = new Image();
-var cal; // Only one calendar object on the page at a time for now
+
+// For Calendar
 var placeCalendar = false; // Toggles when the user is going to place a calendar
 var calendar;
 var calx;
 var caly;
+
+// For Pen
+var paint = false; // Toggles when the user can draw with the pen
+var clickX = new Array();
+var clickY = new Array();
+var clickDrag = new Array();
+var penColor = "#FF0000";
+var penSize = 5;
 
 /*
  * A TextBox is a way to keep track of the text entered in a journal.
@@ -52,7 +65,7 @@ class TextBox {
 /*
  * A Calendar is a blank calendar template that can be drawn on the journal
  */
- class Calendar {
+class Calendar {
  	constructor(xPos, yPos) {
 		this.xPos = xPos;
 		this.yPos = yPos;
@@ -71,7 +84,7 @@ class TextBox {
 
 	set x(xPos) { this.xPos = xPos; }
 	set y(yPos) { this.yPos = yPos; }
- }
+}
 
 /*
  * Sets the document title, sets up vars and event listeners.
@@ -81,11 +94,23 @@ function init() {
 	c = document.getElementById("journal-canvas");
 	c.setAttribute("tabindex", 0);
 	ctx = c.getContext("2d");
-	ctx.canvas.width =  window.innerWidth;
-	ctx.canvas.height =  window.innerHeight;
-
+	ctx.canvas.width =	window.innerWidth;
+	ctx.canvas.height =	window.innerHeight;
 	c.addEventListener('click', setCursorPosition);
 	c.addEventListener('keydown', keyDown, false);
+
+	$("body").bind('keydown', esc);
+
+	$('#edit').bind('click', disableAll);
+	$('#pen').bind('click', '*', enablePen);
+	$('#pen-submenu').bind('click', '*', enablePen);
+	$("#pen-color-picker").on("change", function() {
+    	penColor = $("#pen-color-picker").val();
+		$("#cursor").css("background-color", penColor);
+	});
+	$('#calendar').bind('click', '*', enableCalendar);
+	$('#text').bind('click', '*', enableText);
+	$('#text-submenu').bind('click', '*', enableText);
 
 	backgroundPage.onload = function() {
 		ctx.drawImage(
@@ -97,61 +122,171 @@ function init() {
 	backgroundPage.src = "../images/bujo_transparent.png";
 }
 
+function esc(event) {
+	if ((event.which || event.keyCode || 0) == 27)
+		disableAll();
+}
+
+function enableText() {
+	canType = true;
+	$("#journal-canvas").css('cursor','text');
+}
+
 /*
  * Redraws textboxes onto the canvas on text update.
- * Needs optimization - should only redraw the active textbox boundary
+ * Needs optimization - ideally should only redraw the active textbox boundary
  */
 function redrawText() {
-    textBox.x = cursorPos.x;
-    textBox.y = cursorPos.y;
-	if (ctx != undefined) {
-		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-		ctx.drawImage(
-						backgroundPage,
-						(ctx.canvas.width - backgroundPage.width) / 2,
-						(ctx.canvas.height - backgroundPage.height) / 2
-					);
-		if (calendar != undefined)
-			ctx.drawImage(calendar, calx, caly, 400, 300);
-		ctx.fillStyle = "rgb(0, 0, 0)";
-		ctx.font = "30px Arial";
-		for (var i = 0; i < textBoxes.length; i++) {
-			if (!(textBoxes[i] === textBox) && textBoxes[i].text == "")
-				textBoxes.splice(i, 1);
-			ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
-			console.log(textBoxes[i]);
-		}
+	ctx.fillStyle = "rgb(0, 0, 0)";
+	ctx.font = "30px Arial";
+	for (var i = 0; i < textBoxes.length; i++) {
+		if (!(textBoxes[i] === textBox) && textBoxes[i].text == "")
+			textBoxes.splice(i, 1);
+		ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
 	}
+}
+
+function disableText() {
+	canType = false;
 }
 
 /*
  * Sets x and y to the last clicked position in the canvas.
  */
 function setCursorPosition(event) {
+	$(document).off("mousemove");
+	$("body").css('cursor','unset');
 	var rect = c.getBoundingClientRect();
-    var x = event.clientX - rect.left;
-    var y = event.clientY - rect.top;
-    if (placeCalendar) {
-    	placeCalendar = false;
+	var x = event.clientX - rect.left;
+	var y = event.clientY - rect.top;
+	if (placeCalendar) {
+		disableAll();
 		calendar = new Image();
 		calx = x;
 		caly = y;
 		calendar.onload = function() {
-			ctx.drawImage(calendar, calx, caly, 400, 300);
+			ctx.drawImage(calendar, calx, caly, 337, 251);
 		};
 		calendar.src = "../images/calendar-template.jpg";
 	} else {
-	    cursorPos.x = x;
-	    cursorPos.y = y;
-	    text = "";
-	    textBox = new TextBox(x, y);
-	    textBoxes.push(textBox);
-	    redrawText();
+		cursorPos.x = x;
+		cursorPos.y = y;
+		text = "";
+		textBox = new TextBox(x, y);
+		textBoxes.push(textBox);
+		redraw();
 	}
 }
 
 function enableCalendar() {
+	$("body").css('cursor','none');
+	$("#journal-canvas").css('cursor','none');
 	placeCalendar = true;
+	$("#calendar-img").css("display", "inherit");
+	$(document).mousemove(
+		function(e){
+	 		$("#calendar-img").css({left:e.pageX + 1, top:e.pageY + 1});
+		}
+	);
+}
+
+function redrawCalendar() {
+	if (calendar != undefined)
+		ctx.drawImage(calendar, calx, caly, 337, 251);
+}
+
+function disableCalendar() {
+	placeCalendar = false;
+	$("#calendar-img").css("display", "none");
+}
+
+function enablePen() {
+	$("body").css('cursor','none');
+	$("#journal-canvas").css('cursor','none');
+	$("#cursor").css("display", "inherit");
+	$("#cursor").css("background-color", penColor);
+	$('#journal-canvas').mousedown(
+		function(e){
+			var mouseX = e.pageX - this.offsetLeft;
+			var mouseY = e.pageY - this.offsetTop;
+			paint = true;
+			addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+			redraw();
+		}
+	);
+	$('#journal-canvas').mousemove(
+		function(e){
+			$("#cursor").css({left:e.pageX + 1, top:e.pageY + 1});
+			if(paint){
+				addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+				redraw();
+			}
+		}
+	);
+	$('#journal-canvas').mouseup(
+		function(e){
+			paint = false;
+		}
+	);
+}
+
+function addClick(x, y, dragging) {
+	clickX.push(x);
+	clickY.push(y);
+	clickDrag.push(dragging);
+}
+
+function redrawPen() {
+	ctx.strokeStyle = penColor;
+	ctx.lineJoin = "round";
+	ctx.lineWidth = penSize;
+			
+	for(var i=0; i < clickX.length; i++) {
+		ctx.beginPath();
+		if(clickDrag[i] && i){
+			ctx.moveTo(clickX[i-1], clickY[i-1]);
+		}else{
+			ctx.moveTo(clickX[i]-1, clickY[i]);
+		}
+		ctx.lineTo(clickX[i], clickY[i]);
+		ctx.closePath();
+		ctx.stroke();
+	}
+}
+
+function disablePen() {
+	paint = false;
+	$("#cursor").css("display", "none");
+	$('#journal-canvas').off("mousemove");
+	$('#journal-canvas').off("mousedown");
+	$('#journal-canvas').off("mouseup");
+}
+
+function disableAll() {
+	$("body").css('cursor','default');
+	$("#journal-canvas").css('cursor','default');
+	disableText();
+	disableCalendar();
+	disablePen();
+}
+
+function redraw() {
+	if (ctx != undefined) {
+		// Clear canvas
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		// Draw background
+		ctx.drawImage(
+					backgroundPage,
+					(ctx.canvas.width - backgroundPage.width) / 2,
+					(ctx.canvas.height - backgroundPage.height) / 2
+				);
+		// Draw Calendar
+		redrawCalendar();
+		// Draw Text
+		redrawText();
+		// Draw Pen
+		redrawPen();
+	}
 }
 
 /*
@@ -159,6 +294,7 @@ function enableCalendar() {
  * a character will be added to the current textbox.
  */
 function keyDown(event) {
+	if (!canType) return;
 	var keyCode = event.which || event.keyCode || 0;
 	if (keyCode >= 0x41 && keyCode <= 0x5A) { // Uppercase letters
 
@@ -204,7 +340,7 @@ function keyDown(event) {
 
 	}
 	textBox.text = text;
-	redrawText();
+	redraw();
 }
 
 init();
