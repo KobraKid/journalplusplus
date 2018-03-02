@@ -1,12 +1,12 @@
 <?php
-	
-	/* IMPORTANT: Set to false once outside of a development phase/all developers have logins */
-	$debug = TRUE;
+	require_once('include/lock.php');
 
-	session_start();
-	if (!$_SESSION['user'] && !$debug) { // If there is no user in the current session, go to the login page
-		header("Location: login/login.html");
-		exit;
+	if (isset($debug) && !$debug) {
+		session_start();
+		if (!$_SESSION['user'] && !$debug) { // If there is no user in the current session, go to the login page
+			header("Location: login/login.html");
+			exit;
+		}
 	}
 ?>
 <!doctype html>
