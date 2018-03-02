@@ -97,6 +97,7 @@ function init() {
 	ctx.canvas.width =	window.innerWidth;
 	ctx.canvas.height =	window.innerHeight;
 	c.addEventListener('click', setCursorPosition);
+	c.addEventListener('keydown', keyDown, false);
 
 	$("body").bind('keydown', esc);
 
@@ -122,14 +123,13 @@ function init() {
 }
 
 function esc(event) {
-	if (event.which || event.keyCode || 0 == 0)
+	if ((event.which || event.keyCode || 0) == 27)
 		disableAll();
 }
 
 function enableText() {
 	canType = true;
 	$("#journal-canvas").css('cursor','text');
-	c.addEventListener('keydown', keyDown, false);
 }
 
 /*
@@ -148,7 +148,6 @@ function redrawText() {
 
 function disableText() {
 	canType = false;
-	c.removeEventListener('keydown', keyDown, false);
 }
 
 /*
@@ -295,6 +294,7 @@ function redraw() {
  * a character will be added to the current textbox.
  */
 function keyDown(event) {
+	if (!canType) return;
 	var keyCode = event.which || event.keyCode || 0;
 	if (keyCode >= 0x41 && keyCode <= 0x5A) { // Uppercase letters
 
