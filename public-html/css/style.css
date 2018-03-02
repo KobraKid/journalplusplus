@@ -21,7 +21,7 @@ body {
 */
 
 .material-icons, .zmdi, .fa {
-	color: #d8dad3;
+	color: var(--timberwolf);
 	border: 2px solid #9caea9;
 	background-color: #9caea9;
 	width: 80px;
@@ -48,7 +48,7 @@ body {
 .table {
 	position: absolute;
 	bottom: 0;
-	background: #4a4a48 url('../images/desk.png') no-repeat fixed bottom;
+	background: var(--outer-space) url('../images/desk.png') no-repeat fixed bottom;
 	height: 100vh;
 	background-size: 100vw auto;
 	display: flex;
@@ -76,8 +76,8 @@ body {
 	padding-top: 50px;
 	margin-left: 20px;
 	padding-left: 10px;
-	box-shadow: 10px 10px 10px 10px 10px #4a4a48;
-	background: radial-gradient(circle, #5e656b, #4a4a48);
+	box-shadow: 10px 10px 10px 10px 10px var(--outer-space);
+	background: radial-gradient(circle, #5e656b, var(--outer-space));
 }
 
 .profile-info {
@@ -92,7 +92,7 @@ body {
 }
 
 .profile-large h3 {
-	color: #d8dad3;
+	color: var(--timberwolf);
 }
 
 /*
@@ -119,7 +119,7 @@ body {
 }
 
 #edit-info{
-	background-color: #4a4a48;
+	background-color: var(--outer-space);
 	position: absolute;
 	bottom: 20px;
 	right: 400px;
@@ -141,13 +141,13 @@ body {
     align-items: flex-end;
     padding-right: 4px;
     float: left;
-    background: linear-gradient(to right, #4a4a48, #9caea9);
+    background: linear-gradient(to right, var(--outer-space), #9caea9);
     width: 100%;
     box-shadow: 0px 8px 16px 5px rgba(0,0,0,0.2);
 }
 
 #profile-dropdown a {
-	color: #4a4a48;
+	color: var(--outer-space);
 }
 
 

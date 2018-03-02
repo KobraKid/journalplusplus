@@ -27,7 +27,7 @@ label {
  * IDs
  */
 #form {
-	background: #4a4a48 url('../images/cover_transparent.png') no-repeat fixed center;
+	background: var(--outer-space) url('../images/cover_transparent.png') no-repeat fixed center;
 	height: 100vh;
 }
 
@@ -47,7 +47,7 @@ label {
 
 #switch-to-login {
 	color: black;
-	background-color: #d8dad3;
+	background-color: var(--timberwolf);
 }
 
 /*

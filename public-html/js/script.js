@@ -1,5 +1,5 @@
 var title = "BuJo++";
-var profileVisible = false;
+var profile_visible = false;
 var profileOptions;
 
 function init() {
@@ -19,8 +19,8 @@ function notSupported() {
 function toggleProfile() {
 	if (profileOptions === null) return;
 	
-	profileVisible = !profileVisible;
-	if (profileVisible) {
+	profile_visible = !profile_visible;
+	if (profile_visible) {
 		profileOptions.style.display = "flex";
 	} else {
 		profileOptions.style.display = "none";		
