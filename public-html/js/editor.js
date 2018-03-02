@@ -21,6 +21,7 @@ var numberRowOffset = {
 }; // Used to handle offsets when shift is held down while typing numbers
 var textBoxes = []; // Will contain all textboxes
 var textBox; // Will hold the active textbox
+var textColor = "#000000";
 
 // For Calendar
 var placeCalendar = false; // Toggles when the user is going to place a calendar
@@ -33,6 +34,8 @@ var paint = false; // Toggles when the user can draw with the pen
 var clickX = new Array();
 var clickY = new Array();
 var clickDrag = new Array();
+var clickColor = new Array();
+var clickSize = new Array();
 var penColor = "#FF0000";
 var penSize = 5;
 
@@ -47,6 +50,7 @@ class TextBox {
 		this.yPos = yPos;
 		this._height = 0;
 		this._text = "";
+		this._color = textColor;
 	}
 
 	get x() { return this.xPos; }
@@ -55,11 +59,13 @@ class TextBox {
 	get width() { return (ctx != undefined ? ctx.measureText(this.text) : 0); }
 	get height() { return this._height; }
 	get text() { return this._text; }
+	get color() { return this._color; }
 
 	set x(xPos) { this.xPos = xPos; }
 	set y(yPos) { this.yPos = yPos; }
 	set height(h) { this._height = h; }
 	set text(t) { this._text = t; }
+	set color(c) { this._color = c; }
 }
 
 /*
@@ -111,6 +117,9 @@ function init() {
 	$('#calendar').bind('click', '*', enableCalendar);
 	$('#text').bind('click', '*', enableText);
 	$('#text-submenu').bind('click', '*', enableText);
+	$("#text-color-picker").on("change", function() {
+    	textColor = $("#text-color-picker").val();
+	});
 
 	backgroundPage.onload = function() {
 		ctx.drawImage(
@@ -137,11 +146,11 @@ function enableText() {
  * Needs optimization - ideally should only redraw the active textbox boundary
  */
 function redrawText() {
-	ctx.fillStyle = "rgb(0, 0, 0)";
 	ctx.font = "30px Arial";
 	for (var i = 0; i < textBoxes.length; i++) {
 		if (!(textBoxes[i] === textBox) && textBoxes[i].text == "")
 			textBoxes.splice(i, 1);
+		ctx.fillStyle = textBoxes[i].color;
 		ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
 	}
 }
@@ -234,19 +243,21 @@ function addClick(x, y, dragging) {
 	clickX.push(x);
 	clickY.push(y);
 	clickDrag.push(dragging);
+	clickColor.push(penColor);
+	clickSize.push(penSize);
 }
 
 function redrawPen() {
-	ctx.strokeStyle = penColor;
 	ctx.lineJoin = "round";
-	ctx.lineWidth = penSize;
 			
-	for(var i=0; i < clickX.length; i++) {
+	for(var i = 0; i < clickX.length; i++) {
+		ctx.strokeStyle = clickColor[i];
+		ctx.lineWidth = clickSize[i];
 		ctx.beginPath();
-		if(clickDrag[i] && i){
-			ctx.moveTo(clickX[i-1], clickY[i-1]);
-		}else{
-			ctx.moveTo(clickX[i]-1, clickY[i]);
+		if (clickDrag[i] && i) {
+			ctx.moveTo(clickX[i - 1], clickY[i - 1]);
+		} else {
+			ctx.moveTo(clickX[i] - 1, clickY[i]);
 		}
 		ctx.lineTo(clickX[i], clickY[i]);
 		ctx.closePath();
