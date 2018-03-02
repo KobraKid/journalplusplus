@@ -56,11 +56,44 @@ body {
     align-items: flex-end;
     padding-bottom: 4%;
 }
+.text-box {
+    position: absolute;
+		float: left;
+    height: 100%;
+    text-align: left;
+		padding-left: 48px;
+    width: 100%;
+}
+.text-box:before {
+   content: '';
+   display: inline-block;
+   height: 20%;
+   vertical-align: middle;
+}
+h3{
+	display: inline-block;
+	color: #343434;
+ 	text-shadow:
+	 -1px -1px 0 #FFFFFF,
+	 1px -1px 0 #FFFFFF,
+	 -1px 1px 0 #FFFFFF,
+	 1px 1px 0 #FFFFFF;
+ 	font-family: courier;
+ 	font-size: 32px;
+ 	font-weight: bold;
+}
+
+.container{
+	position:relative;
+	display: inline-block;
+}
 
 .book {
 	height: auto;
 	width: auto;
+	max-width: 100%;
 	padding-bottom: 100px;
+	display: block;
 }
 
 .book h3{
@@ -149,5 +182,3 @@ body {
 #profile-dropdown a {
 	color: var(--outer-space);
 }
-
-
