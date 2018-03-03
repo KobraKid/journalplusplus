@@ -2,6 +2,8 @@
 var c; // canvas
 var ctx; // context
 var backgroundPage = new Image(); // The journal in the background
+var bgWidth = 800;
+var bgHeight = 600;
 
 // For Textbox
 var canType = false; // Toggles when the user can type
@@ -106,8 +108,7 @@ function init() {
 	c.addEventListener('keydown', keyDown, false);
 
 	$("body").bind('keydown', esc);
-
-	$('#edit').bind('click', disableAll);
+	$('#edit').bind('click', '*', disableAll);
 	$('#pen').bind('click', '*', enablePen);
 	$('#pen-submenu').bind('click', '*', enablePen);
 	$("#pen-color-picker").on("change", function() {
@@ -122,10 +123,14 @@ function init() {
 	});
 
 	backgroundPage.onload = function() {
+		bgHeight = ctx.canvas.height * 0.98; // This controls the size of the journal
+		bgWidth = bgHeight * 4 / 3; // Preserve image ratio
 		ctx.drawImage(
 						backgroundPage,
-						(ctx.canvas.width - backgroundPage.width) / 2,
-						(ctx.canvas.height - backgroundPage.height) / 2
+						(ctx.canvas.width - bgWidth) / 2,
+						(ctx.canvas.height - bgHeight) / 2,
+						bgWidth,
+						bgHeight
 					);
 	};
 	backgroundPage.src = "../images/bujo_transparent.png";
@@ -137,6 +142,7 @@ function esc(event) {
 }
 
 function enableText() {
+	disableAll();
 	canType = true;
 	$("#journal-canvas").css('cursor','text');
 }
@@ -188,6 +194,7 @@ function setCursorPosition(event) {
 }
 
 function enableCalendar() {
+	disableAll();
 	$("body").css('cursor','none');
 	$("#journal-canvas").css('cursor','none');
 	placeCalendar = true;
@@ -210,6 +217,7 @@ function disableCalendar() {
 }
 
 function enablePen() {
+	disableAll();
 	$("body").css('cursor','none');
 	$("#journal-canvas").css('cursor','none');
 	$("#cursor").css("display", "inherit");
@@ -288,8 +296,10 @@ function redraw() {
 		// Draw background
 		ctx.drawImage(
 					backgroundPage,
-					(ctx.canvas.width - backgroundPage.width) / 2,
-					(ctx.canvas.height - backgroundPage.height) / 2
+					(ctx.canvas.width - bgWidth) / 2,
+					(ctx.canvas.height - bgHeight) / 2,
+					bgWidth,
+					bgHeight
 				);
 		// Draw Calendar
 		redrawCalendar();

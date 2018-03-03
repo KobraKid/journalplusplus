@@ -1,6 +1,8 @@
 var title = "BuJo++";
 var profile_visible = false;
 var profileOptions;
+var knick_knacks = ["cactus", "fishbowl", "lavalamp", "vase", "rock", "cube", "bird"];
+var k = 0;
 
 function init() {
 	document.title = title;
@@ -25,6 +27,32 @@ function toggleProfile() {
 	} else {
 		profileOptions.style.display = "none";		
 	}
+}
+
+function getPageName() {
+	var page = window.location.href;
+	page = page.substring(page.indexOf("/") + 1);
+	page = page.substring(page.indexOf("/") + 1);
+	page = page.substring(page.indexOf("/") + 1);
+	return page;
+}
+
+function goBack() {
+	var page = getPageName();
+	switch (page) {
+		case "edit/index.html":
+			window.location = window.location.href.substring(0, window.location.href.indexOf(page)) + "index.html";
+			break;
+		case "profile.html":
+			window.location = window.location.href.substring(0, window.location.href.indexOf(page)) + "index.html";
+			break;
+	}
+	console.log(page);
+}
+
+function toggleKnickKnack() {
+	k = (k + 1) % knick_knacks.length;
+	$("#knick-knack").attr("src", "images/" + knick_knacks[k] + ".png");
 }
 
 init();
