@@ -110,7 +110,7 @@ h3{
 	margin-left: 20px;
 	padding-left: 10px;
 	box-shadow: 10px 10px 10px 10px 10px var(--outer-space);
-	background: radial-gradient(circle, #89909f, var(--outer-space));
+	background: #89909f;
 }
 
 .profile-info {
