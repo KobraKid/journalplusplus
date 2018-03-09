@@ -1,25 +1,38 @@
+<?php
+	require_once('include/lock.php');
+
+	if (isset($debug) && !$debug) {
+		session_start();
+		if (!$_SESSION['user'] && !$debug) { // If there is no user in the current session, go to the login page
+			header("Location: login/login.html");
+			exit;
+		}
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<?php include("include/meta.html");?> 
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/editor.css" />
-	</head>
-		<?php include("include/header.html");?>
-		<?php include("include/navigation.html");?>
-	<body>
-		<div class="container">
-			<div class="row">
-				<div class="profile-large align-self-center">
-					<h2>User Profile</h2>
+	<?php include("include/meta.html");?>
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/editor.css" />
+</head>
+<?php include("include/header.html");?>
+<?php include("include/navigation.html");?>
+<body>
+		<div class="profile-large align-self-center">
+				<h2>User Profile</h2>
+				<div>
 					<h3> Name: <?php if($_SESSION['user']) { echo($_SESSION['user'][username]); } else { echo("User"); } ?></h3>
-					<h3> E-mail: <?php if($_SESSION['user']) { echo($_SESSION['user'][email]); } else { echo("You don't have one!"); } ?></h3>
-					<button onclick="notSupported()" id="terminate">Delete Account</button>
-					<button onclick="notSupported()" id="edit-info">Edit Info</button>
 				</div>
+				<div>
+					<h3> E-mail: <?php if($_SESSION['user']) { echo($_SESSION['user'][email]); } else { echo("You don't have one!"); } ?></h3>
+				</div>
+			<div class="container">
+				<button onclick="notSupported()" id="terminate">Delete Account</button>
+				<button onclick="notSupported()" id="edit-info">Edit Info</button>
 			</div>
 		</div>
-		<?php include("include/footer.html");?>
-		<script src="js/script.js"></script>
-	</body>
+	<?php include("include/footer.html");?>
+	<script src="js/script.js"></script>
+</body>
 </html>
