@@ -6,7 +6,7 @@ input[type=text], input[type=password] {
 }
 
 button {
-	background-color: #9caea9;
+	background-color: #c78283;
 	color: white;
 	border: none;
 	cursor: pointer;
@@ -54,7 +54,7 @@ label {
  * Classes
  */
 .cancel {
-	background-color: #373f47;
+	background-color: #e5eafa;
 }
 
 .vertical-center {
