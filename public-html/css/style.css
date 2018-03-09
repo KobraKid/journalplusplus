@@ -70,7 +70,8 @@ body {
    height: 20%;
    vertical-align: middle;
 }
-h3{
+
+h3 {
 	display: inline-block;
 	color: #514f59;
  	text-shadow:
@@ -83,7 +84,7 @@ h3{
  	font-weight: bold;
 }
 
-.container{
+.container {
 	position:relative;
 	display: inline-block;
 }
@@ -96,7 +97,7 @@ h3{
 	display: block;
 }
 
-.book h3{
+.book h3 {
 	position: absolute;
 	padding-left: 15%;
 	margin-top: 40px;
@@ -107,8 +108,8 @@ h3{
 	height: 99vh;
 	width: 1000px;
 	padding-top: 50px;
-	margin-left: 20px;
-	padding-left: 10px;
+	padding-left: 80px;
+	margin-left: 80px;
 	box-shadow: 10px 10px 10px 10px 10px var(--outer-space);
 	background: #89909f;
 }
@@ -136,15 +137,22 @@ h3{
  * IDs
  */
 
-#profileBar {
+#backArrow, #profileBar {
 	z-index: 999;
 	position: absolute;
 	top: 0;
-	right: 0;
 	cursor: pointer;
 }
 
-#profile {
+#backArrow {
+	left: 0;
+}
+
+#profileBar {
+	right: 0;
+}
+
+#profile, #back {
 	color: #0c8d9b;
 	font-size: 4em;
 	float: right;
@@ -153,6 +161,10 @@ h3{
 	width: initial;
 	height: initial;
 	background-color: transparent;
+}
+
+#back {
+	line-height: 1em;
 }
 
 #edit-info{
