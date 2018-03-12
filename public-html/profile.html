@@ -19,12 +19,22 @@
 <?php include("include/navigation.html");?>
 <body>
 		<div class="profile-large align-self-center">
+				<i id="profile-icon" class="material-icons">ic_person</i>
 				<h2>User Profile</h2>
 				<div>
 					<h3> Name: <?php if($_SESSION['user']) { echo($_SESSION['user'][username]); } else { echo("User"); } ?></h3>
 				</div>
 				<div>
 					<h3> E-mail: <?php if($_SESSION['user']) { echo($_SESSION['user'][email]); } else { echo("You don't have one!"); } ?></h3>
+				</div>
+				<div>
+					<h3>Last journal edit: 03.11.2018</h3>
+				</div>
+				<div>
+					<h3>Journals authored: 1</h3>
+				</div>
+				<div>
+					<h3>Member since:  01.20.2018</h3>
 				</div>
 			<div class="container">
 				<button onclick="notSupported()" id="terminate">Delete Account</button>

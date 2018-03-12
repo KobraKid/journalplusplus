@@ -26,7 +26,7 @@ body {
 	background-color: #514f59;
 	width: 80px;
 	height: 80px;
-	border-radius: 40px
+	border-radius: 40px;
 }
 
 .banner {
@@ -121,8 +121,7 @@ h3 {
 }
 
 .profile-large h2 {
-	color: #0c8d9b
-;
+	color: #0c8d9b;
 	font-family: courier;
 	font-weight: bold;
 	font-size: 350%;
@@ -198,4 +197,11 @@ h3 {
 
 #profile-dropdown a {
 	color: var(--outer-space);
+}
+#profile-icon {
+	border-radius: 50%;
+	float: right;
+	height: 150px;
+	width: 150px;
+	background-color: transparent;
 }
