@@ -7,7 +7,7 @@ var k = 0;
 function init() {
 	document.title = title;
 	if (document.getElementById("profile") !== null) {
-		document.getElementById("profile").addEventListener('click', toggleProfile);;
+		document.getElementById("profile").addEventListener('click', toggleProfile);
 		profileOptions = document.getElementById("profile-dropdown");
 		profileOptions.style.display = "none";
 		console.log(profileOptions);

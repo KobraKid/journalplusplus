@@ -31,7 +31,10 @@ body {
 
 .cactus {
 	height: auto;
-	width: 200px;
+	width: 13vw;
+	position: absolute;
+    right: 15%;
+    bottom: 15%;
 }
 
 .cactus img{
@@ -50,14 +53,17 @@ body {
     align-items: flex-end;
     padding-bottom: 4%;
 }
+
 .text-box {
     position: absolute;
-		float: left;
+	float: left;
     height: 100%;
     text-align: left;
-		padding-left: 48px;
+	padding-left: 15vw;
+	padding-top: 1%;
     width: 100%;
 }
+
 .text-box:before {
    content: '';
    display: inline-block;
@@ -74,7 +80,7 @@ h3 {
 	 -1px 1px 0 #FFFFFF,
 	 1px 1px 0 #FFFFFF;
  	font-family: courier;
- 	font-size: 32px;
+ 	font-size: 2em;
  	font-weight: bold;
 }
 
@@ -85,10 +91,14 @@ h3 {
 
 .book {
 	height: auto;
-	width: auto;
+	width: 30vw;
 	max-width: 100%;
 	padding-bottom: 100px;
 	display: block;
+}
+
+.book img {
+	width: 100%;
 }
 
 .book h3 {
