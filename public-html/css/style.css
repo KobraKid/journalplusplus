@@ -1,6 +1,7 @@
 :root {
 	--timberwolf: #89909f;
 	--outer-space: #e5eafa;
+	--bluegreen: #0c8d9b;
 }
 
 body {
@@ -114,7 +115,7 @@ h3 {
 }
 
 .profile-large h2 {
-	color: #0c8d9b;
+	color: var(--bluegreen);
 	font-family: courier;
 	font-weight: bold;
 	font-size: 350%;
@@ -122,7 +123,7 @@ h3 {
 }
 
 .profile-large h3 {
-	color: #0c8d9b;
+	color: var(--bluegreen);
 }
 
 /*
@@ -147,7 +148,8 @@ h3 {
 }
 
 #profile, #back {
-	color: #0c8d9b;
+	color: var(--bluegreen);
+	background-color: transparent;
 	font-size: 4em;
 	float: right;
 	user-select: none;
@@ -204,4 +206,5 @@ h3 {
 	background-color: transparent;
 	font-size: 140px;
 	text-align: center;
+	color: var(--bluegreen);
 }
