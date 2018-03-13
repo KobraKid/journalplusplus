@@ -17,5 +17,8 @@ Thumbs.db
 # Ignore my script files
 *.sh
 
+# Ignore changes to the lock file
+lock.php
+
 ### Don't Ignore
 !.gitignore
