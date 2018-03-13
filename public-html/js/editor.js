@@ -51,12 +51,18 @@ function init() {
 }
 
 function esc(event) {
-	if ((event.which || event.keyCode || 0) == 27)
+	if ((event.which || event.keyCode || 0) == 27) {
+		if (popupExists) {
+			closePopup();
+			redraw();
+		}
 		disableAll();
+	}
 }
 
 /*
  * Sets x and y to the last clicked position in the canvas.
+ * Performs the relevant action for the current tool.
  */
 function setCursorPosition(event) {
 	$(document).off("mousemove");
@@ -64,21 +70,52 @@ function setCursorPosition(event) {
 	var rect = c.getBoundingClientRect();
 	var x = event.clientX - rect.left;
 	var y = event.clientY - rect.top;
-	if (placeCalendar) {
+
+	// Deal with placing a new object
+	if (placeCalendar) { // make a new calendar
 		disableAll();
 		calendars.push(new Calendar(x, y));
-	} else if (canType) {
-		textPos.x = x;
-		textPos.y = y;
+	} else if (canType) { // make a new textbox
 		text = "";
-		textBox = new TextBox(x, y);
+		textBox = new TextBox(x, y, textSize);
 		textBoxes.push(textBox);
-	} else if (paint) {
+	} else if (paint) { // this isn't meaninful for drawing/painting
 
-	} else {
-
+	} else { // toggle the popup if no tool is active
+		if (!popupExists) {
+			console.log("Click was at: ", x, ", ", y);
+			/* check to see if a calendar was clicked on */
+			for (var cal in calendars) {
+				if (isInBounds(x, y, calendars[cal])) {
+					console.log("Click was in bounds of calendar: ", calendars[cal]);
+					openPopup(x, y);
+					disableAll();
+					break;
+				}
+			}
+			/* check to see if a textbox was clicked on */
+			for (var t in textBoxes) {
+				console.log(textBoxes[t]);
+				if (isInBounds(x, y, textBoxes[t])) {
+					console.log("Click was in bounds of textbox: ", textBoxes[t]);
+					// TODO: re-enable editing of clicked textbox
+					disableAll();
+					break;
+				}
+			}
+		} else {
+			closePopup();
+			disableAll();
+		}
 	}
+
 	redraw();
+}
+
+function isInBounds(clickX, clickY, obj) {
+	console.log(obj.x, obj.y, obj.width, obj.height);
+	return (((clickX > obj.x) && (clickX < obj.x + obj.width))
+		&& ((clickY > obj.y) && (clickY < obj.y + obj.height)));
 }
 
 function disableAll() {
@@ -107,6 +144,8 @@ function redraw() {
 		redrawText();
 		// Draw Pen
 		redrawPen();
+		// Draw Popup (on top of anything else)
+		redrawPopup();
 	}
 }
 

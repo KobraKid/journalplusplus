@@ -20,12 +20,16 @@ class Calendar {
  	constructor(xPos, yPos) {
 		this.xPos = xPos;
 		this.yPos = yPos;
+		this.w = calWidth;
+		this.h = calHeight;
 		this.mo = new Date().getMonth();
 		this.yr = new Date().getFullYear();
 	}
 
 	get x() { return this.xPos; }
 	get y() { return this.yPos; }
+	get width() { return this.w; }
+	get height() { return this.h; }
 	get month() { return this.mo; }
 	get year() { return this.yr; }
 }
@@ -45,7 +49,7 @@ function enableCalendar() {
 
 function redrawCalendar() {
 	for (var i = 0; i < calendars.length; i++)
-		draw_calendar(ctx, calendars[i]);
+		draw_calendar(calendars[i]);
 
 }
 
@@ -59,7 +63,7 @@ function disableCalendar() {
  * starting at the point the mouse clicked. The calendar will draw the
  * current month and year. 
  */
-function draw_calendar(ctx, calendar) {
+function draw_calendar(calendar) {
 	var x = calendar.x;
 	var y = calendar.y;
 	ctx.strokeStyle = "#000000";
