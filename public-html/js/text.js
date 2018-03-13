@@ -1,7 +1,7 @@
 // For Textbox
 var canType = false; // Toggles when the user can type
-var textPos = {"x": 0, "y": 0};
 var text = ""; // typed text
+var textSize = 30;
 var numberRowOffset = {
 	"1": -0x10,
 	"2": 0xE,
@@ -24,10 +24,10 @@ var textColor = "#000000";
  * param y : An integer describing the topmost coordinate of the textbox
  */
 class TextBox {
-	constructor(xPos, yPos) {
+	constructor(xPos, yPos, size) {
 		this.xPos = xPos;
 		this.yPos = yPos;
-		this._height = 0;
+		this._height = size;
 		this._text = "";
 		this._color = textColor;
 	}
@@ -35,7 +35,7 @@ class TextBox {
 	get x() { return this.xPos; }
 	get y() { return this.yPos; }
 
-	get width() { return (ctx != undefined ? ctx.measureText(this.text) : 0); }
+	get width() { return (ctx != undefined ? ctx.measureText(this.text).width : 0); }
 	get height() { return this._height; }
 	get text() { return this._text; }
 	get color() { return this._color; }
@@ -58,12 +58,12 @@ function enableText() {
  * Needs optimization - ideally should only redraw the active textbox boundary
  */
 function redrawText() {
-	ctx.font = "30px Arial";
 	for (var i = 0; i < textBoxes.length; i++) {
 		if (!(textBoxes[i] === textBox) && textBoxes[i].text == "")
 			textBoxes.splice(i, 1);
+		ctx.font = textBoxes[i].height + "px Arial";
 		ctx.fillStyle = textBoxes[i].color;
-		ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
+		ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y + textBoxes[i].height);
 	}
 }
 
