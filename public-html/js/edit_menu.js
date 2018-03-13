@@ -48,6 +48,13 @@ function toggleMenu(menuToToggle) {
 			if (edit_menu_visible)
 				document.getElementById(edit_menu[item]).style.display = "flex";
 		}
+		if (edit_menu_visible) {
+			$("#edit-root").css("display", "none");
+			$("#return").css("display", "inline-block");
+		} else {
+			$("#edit-root").css("display", "inline-block");
+			$("#return").css("display", "none");
+		}
 	}
 	/* If turning on the element menu, turn off pen, shape and text menus */
 	else if(menuToToggle == 'element-menu') {
