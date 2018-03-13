@@ -1,5 +1,5 @@
 body {
-	background-color: var(--timberwolf);
+	background-color: var(--outer-space);
 	overflow:hidden;
 }
 
@@ -50,8 +50,8 @@ input[type="color"]::-webkit-color-swatch {
 
 #calendar-img {
 	opacity: 0.6;
-	width: 337px;
-	height: 251px;
+	width: 320px;
+	height: 270px;
 }
 
 #cursor {

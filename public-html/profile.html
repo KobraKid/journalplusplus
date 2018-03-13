@@ -16,9 +16,9 @@
 	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<?php include("include/navigation.html");?>
+	<?php include("include/navigation.html");?>
 		<div class="profile-large align-self-center">
-				<i id="profile-icon" class="material-icons">ic_person</i>
+				<i id="profile-icon" class="material-icons">person</i>
 				<h2>User Profile</h2>
 				<div>
 					<h3> Name: <?php if($_SESSION['user']) { echo($_SESSION['user'][username]); } else { echo("User"); } ?></h3>

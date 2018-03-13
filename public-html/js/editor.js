@@ -5,95 +5,6 @@ var backgroundPage = new Image(); // The journal in the background
 var bgWidth = 800;
 var bgHeight = 600;
 
-// For Textbox
-var canType = false; // Toggles when the user can type
-var cursorPos = {"x": 0, "y": 0};
-var text = ""; // typed text
-var numberRowOffset = {
-	"1": -0x10,
-	"2": 0xE,
-	"3": -0x10,
-	"4": -0x10,
-	"5": -0x10,
-	"6": 0x28,
-	"7": -0x11,
-	"8": -0xE,
-	"9": -0x11,
-	"0": -0x7
-}; // Used to handle offsets when shift is held down while typing numbers
-var textBoxes = []; // Will contain all textboxes
-var textBox; // Will hold the active textbox
-var textColor = "#000000";
-
-// For Calendar
-var placeCalendar = false; // Toggles when the user is going to place a calendar
-var calendar;
-var calx;
-var caly;
-
-// For Pen
-var paint = false; // Toggles when the user can draw with the pen
-var clickX = new Array();
-var clickY = new Array();
-var clickDrag = new Array();
-var clickColor = new Array();
-var clickSize = new Array();
-var penColor = "#FF0000";
-var penSize = 5;
-
-/*
- * A TextBox is a way to keep track of the text entered in a journal.
- * param x : An integer describing the leftmost coordinate of the textbox
- * param y : An integer describing the topmost coordinate of the textbox
- */
-class TextBox {
-	constructor(xPos, yPos) {
-		this.xPos = xPos;
-		this.yPos = yPos;
-		this._height = 0;
-		this._text = "";
-		this._color = textColor;
-	}
-
-	get x() { return this.xPos; }
-	get y() { return this.yPos; }
-
-	get width() { return (ctx != undefined ? ctx.measureText(this.text) : 0); }
-	get height() { return this._height; }
-	get text() { return this._text; }
-	get color() { return this._color; }
-
-	set x(xPos) { this.xPos = xPos; }
-	set y(yPos) { this.yPos = yPos; }
-	set height(h) { this._height = h; }
-	set text(t) { this._text = t; }
-	set color(c) { this._color = c; }
-}
-
-/*
- * A Calendar is a blank calendar template that can be drawn on the journal
- */
-class Calendar {
- 	constructor(xPos, yPos) {
-		this.xPos = xPos;
-		this.yPos = yPos;
-		calendar = new Image();
-		calendar.onload = function() {
-			ctx.drawImage(
-						calendar,
-						this.xPos, this.yPos
-					);
-		};
-		calendar.src = "../images/calendar-template.jpg";
-	}
-
-	get x() { return this.xPos; }
-	get y() { return this.yPos; }
-
-	set x(xPos) { this.xPos = xPos; }
-	set y(yPos) { this.yPos = yPos; }
-}
-
 /*
  * Sets the document title, sets up vars and event listeners.
  */
@@ -134,35 +45,14 @@ function init() {
 					);
 	};
 	backgroundPage.src = "../images/bujo_transparent.png";
+
+	// Default tool
+	enablePen();
 }
 
 function esc(event) {
 	if ((event.which || event.keyCode || 0) == 27)
 		disableAll();
-}
-
-function enableText() {
-	disableAll();
-	canType = true;
-	$("#journal-canvas").css('cursor','text');
-}
-
-/*
- * Redraws textboxes onto the canvas on text update.
- * Needs optimization - ideally should only redraw the active textbox boundary
- */
-function redrawText() {
-	ctx.font = "30px Arial";
-	for (var i = 0; i < textBoxes.length; i++) {
-		if (!(textBoxes[i] === textBox) && textBoxes[i].text == "")
-			textBoxes.splice(i, 1);
-		ctx.fillStyle = textBoxes[i].color;
-		ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y);
-	}
-}
-
-function disableText() {
-	canType = false;
 }
 
 /*
@@ -176,109 +66,19 @@ function setCursorPosition(event) {
 	var y = event.clientY - rect.top;
 	if (placeCalendar) {
 		disableAll();
-		calendar = new Image();
-		calx = x;
-		caly = y;
-		calendar.onload = function() {
-			ctx.drawImage(calendar, calx, caly, 337, 251);
-		};
-		calendar.src = "../images/calendar-template.jpg";
-	} else {
-		cursorPos.x = x;
-		cursorPos.y = y;
+		calendars.push(new Calendar(x, y));
+	} else if (canType) {
+		textPos.x = x;
+		textPos.y = y;
 		text = "";
 		textBox = new TextBox(x, y);
 		textBoxes.push(textBox);
-		redraw();
+	} else if (paint) {
+
+	} else {
+
 	}
-}
-
-function enableCalendar() {
-	disableAll();
-	$("body").css('cursor','none');
-	$("#journal-canvas").css('cursor','none');
-	placeCalendar = true;
-	$("#calendar-img").css("display", "inherit");
-	$(document).mousemove(
-		function(e){
-	 		$("#calendar-img").css({left:e.pageX + 1, top:e.pageY + 1});
-		}
-	);
-}
-
-function redrawCalendar() {
-	if (calendar != undefined)
-		ctx.drawImage(calendar, calx, caly, 337, 251);
-}
-
-function disableCalendar() {
-	placeCalendar = false;
-	$("#calendar-img").css("display", "none");
-}
-
-function enablePen() {
-	disableAll();
-	$("body").css('cursor','none');
-	$("#journal-canvas").css('cursor','none');
-	$("#cursor").css("display", "inherit");
-	$("#cursor").css("background-color", penColor);
-	$('#journal-canvas').mousedown(
-		function(e){
-			var mouseX = e.pageX - this.offsetLeft;
-			var mouseY = e.pageY - this.offsetTop;
-			paint = true;
-			addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-			redraw();
-		}
-	);
-	$('#journal-canvas').mousemove(
-		function(e){
-			$("#cursor").css({left:e.pageX + 1, top:e.pageY + 1});
-			if(paint){
-				addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-				redraw();
-			}
-		}
-	);
-	$('#journal-canvas').mouseup(
-		function(e){
-			paint = false;
-		}
-	);
-}
-
-function addClick(x, y, dragging) {
-	clickX.push(x);
-	clickY.push(y);
-	clickDrag.push(dragging);
-	clickColor.push(penColor);
-	clickSize.push(penSize);
-}
-
-function redrawPen() {
-	ctx.lineJoin = "round";
-			
-	for(var i = 0; i < clickX.length; i++) {
-		ctx.strokeStyle = clickColor[i];
-		ctx.lineWidth = clickSize[i];
-		ctx.beginPath();
-		if (clickDrag[i] && i) {
-			ctx.moveTo(clickX[i - 1], clickY[i - 1]);
-		} else {
-			ctx.moveTo(clickX[i] - 1, clickY[i]);
-		}
-		ctx.lineTo(clickX[i], clickY[i]);
-		ctx.closePath();
-		ctx.stroke();
-	}
-}
-
-function disablePen() {
-	paint = false;
-	$("#cursor").css("display", "none");
-	$('#journal-canvas').off("mousemove");
-	$('#journal-canvas').off("mousedown");
-	$('#journal-canvas').off("mouseup");
+	redraw();
 }
 
 function disableAll() {
@@ -308,60 +108,6 @@ function redraw() {
 		// Draw Pen
 		redrawPen();
 	}
-}
-
-/*
- * Gets a keypress. If it matches with one of the allowed keypresses,
- * a character will be added to the current textbox.
- */
-function keyDown(event) {
-	if (!canType) return;
-	var keyCode = event.which || event.keyCode || 0;
-	if (keyCode >= 0x41 && keyCode <= 0x5A) { // Uppercase letters
-
-		// Make sure to shift to lowercase only if shift key is not pressed,
-		// or caps-lock key is not pressed, but not both
-		text = text + String.fromCharCode(keyCode + (event.shiftKey ^ event.getModifierState('CapsLock') ? 0 : 0x20));
-
-	} else if (keyCode >= 0x30 && keyCode <= 0x39) { // Numbers
-
-		// add "number row" offset if shift key is being pressed
-		text = text + String.fromCharCode(keyCode + (event.shiftKey ? numberRowOffset[String.fromCharCode(keyCode)] : 0));
-
-	} else if (keyCode >= 96 && keyCode <= 105) { // NumPad keys
-
-		text = text + (keyCode - 96);
-
-	} else {
-
-		// Handle special characters (space, newline, backspace)
-		// and weird cases where JS keycodes do not match with UNICODE
-		switch (keyCode) {
-			case 8: text = (text.length >= 1 ? text.substr(0, text.length - 1) : ""); break;
-			case 13: text = text + "\n"; break;
-			case 32: text = text + " "; break;
-			case 106: text = text = text + "*"; break;
-			case 107: text = text = text + "+"; break;
-			case 109: text = text = text + "-"; break;
-			case 110: text = text = text + "."; break;
-			case 111: text = text = text + "/"; break;
-			case 186: text = text = text + (event.shiftKey ? ":" : ";"); break;
-			case 187: text = text = text + (event.shiftKey ? "+" : "="); break;
-			case 188: text = text = text + (event.shiftKey ? "<" : ","); break;
-			case 189: text = text = text + (event.shiftKey ? "_" : "-"); break;
-			case 190: text = text = text + (event.shiftKey ? ">" : "."); break;
-			case 191: text = text = text + (event.shiftKey ? "?" : "/"); break;
-			case 192: text = text = text + (event.shiftKey ? "~" : "`"); break;
-			case 219: text = text = text + (event.shiftKey ? "{" : "["); break;
-			case 220: text = text = text + (event.shiftKey ? "|" : "\\"); break;
-			case 221: text = text = text + (event.shiftKey ? "}" : "]"); break;
-			case 222: text = text = text + (event.shiftKey ? "\"" : "'"); break;
-			default: return; // The key is not recognized, or is not meant for character input
-		}
-
-	}
-	textBox.text = text;
-	redraw();
 }
 
 init();
