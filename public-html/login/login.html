@@ -75,6 +75,9 @@ if (isset($debug) && !$debug) {
 		<link rel="stylesheet" href="../css/login.css" />
 	</head>
 	<body>
+		<div id="logo">
+			<img src="../images/logo.png" />
+		</div>
 		<?php if(isset($failure)){ ?><div class="banner container-fluid"><div class="row justify-content-center"><div class="col-6 alert alert-danger" role="alert"><?php echo $failure; ?></div></div></div><?php } ?>
 		<div class="container-fluid">
 			<div class="row justify-content-center">
