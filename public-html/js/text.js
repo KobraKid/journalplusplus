@@ -17,6 +17,8 @@ var numberRowOffset = {
 var textBoxes = []; // Will contain all textboxes
 var textBox; // Will hold the active textbox
 var textColor = "#000000";
+var isBold = false;
+var isItalic = false;
 
 /*
  * A TextBox is a way to keep track of the text entered in a journal.
@@ -24,12 +26,14 @@ var textColor = "#000000";
  * param y : An integer describing the topmost coordinate of the textbox
  */
 class TextBox {
-	constructor(xPos, yPos, size) {
+	constructor(xPos, yPos, size, b, i) {
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this._height = size;
 		this._text = "";
 		this._color = textColor;
+		this._bold = b;
+		this._italic = i;
 	}
 
 	get x() { return this.xPos; }
@@ -39,6 +43,8 @@ class TextBox {
 	get height() { return this._height; }
 	get text() { return this._text; }
 	get color() { return this._color; }
+	get isBold() { return this._bold; }
+	get isItalic() { return this._italic; }
 
 	set x(xPos) { this.xPos = xPos; }
 	set y(yPos) { this.yPos = yPos; }
@@ -51,6 +57,8 @@ function enableText() {
 	disableAll();
 	canType = true;
 	$("#journal-canvas").css('cursor','text');
+	// isBold = false;
+	// isItalic = false;
 }
 
 /*
@@ -61,7 +69,7 @@ function redrawText() {
 	for (var i = 0; i < textBoxes.length; i++) {
 		if (!(textBoxes[i] === textBox) && textBoxes[i].text == "")
 			textBoxes.splice(i, 1);
-		ctx.font = textBoxes[i].height + "px Arial";
+		ctx.font = (textBoxes[i].isItalic ? "italic " : "") + (textBoxes[i].isBold ? "bold " : "") + textBoxes[i].height + "px Arial";
 		ctx.fillStyle = textBoxes[i].color;
 		ctx.fillText(textBoxes[i].text, textBoxes[i].x, textBoxes[i].y + textBoxes[i].height);
 	}
@@ -69,6 +77,24 @@ function redrawText() {
 
 function disableText() {
 	canType = false;
+}
+
+function getFontSize() {
+    textSize = prompt("Please select a font size:", textSize);
+    if (textSize == null || textSize == "") {
+    	textSize = 30;
+    } else {
+    	textSize = parseInt(textSize);
+    }
+}
+
+function toggleBold() {
+	console.log(isBold);
+	isBold = !isBold;
+}
+
+function toggleItalic() {
+	isItalic = !isItalic;
 }
 
 /*
