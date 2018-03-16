@@ -32,6 +32,9 @@ function init() {
 	$("#text-color-picker").on("change", function() {
     	textColor = $("#text-color-picker").val();
 	});
+	$('#size').bind('click', getFontSize);
+	$('#bold').bind('click', toggleBold);
+	$('#italic').bind('click', toggleItalic);
 
 	backgroundPage.onload = function() {
 		bgHeight = ctx.canvas.height * 0.98; // This controls the size of the journal
@@ -77,7 +80,7 @@ function setCursorPosition(event) {
 		calendars.push(new Calendar(x, y));
 	} else if (canType) { // make a new textbox
 		text = "";
-		textBox = new TextBox(x, y, textSize);
+		textBox = new TextBox(x, y, textSize, isBold, isItalic);
 		textBoxes.push(textBox);
 	} else if (paint) { // this isn't meaninful for drawing/painting
 
